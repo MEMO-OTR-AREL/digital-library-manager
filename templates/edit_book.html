@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+</head>
+<body>
+
+    <h1>Edit Book</h1>
+
+    <form method="POST">
+
+        <label>Title:</label>
+        <input type="text" name="title" value="{{ book[2] }}">
+        <br><br>
+
+        <label>Author:</label>
+        <input type="text" name="author" value="{{ book[3] }}">
+        <br><br>
+
+        <label>Category:</label>
+        <input type="text" name="category" value="{{ book[4] }}">
+        <br><br>
+
+        <label>Status:</label>
+        <input type="text" name="status" value="{{ book[5] }}">
+        <br><br>
+
+        <label>Rating:</label>
+        <input type="number" name="rating" value="{{ book[6] }}">
+        <br><br>
+
+        <button type="submit">Update Book</button>
+
+    </form>
+
+</body>
+</html>
