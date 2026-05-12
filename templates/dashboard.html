@@ -1,36 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
+
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<h1>Welcome {{ username }}</h1>
+<div class="dashboard-wrapper">
 
-<div class="navbar">
+    <div class="dashboard-navbar">
 
-    <a href="/dashboard">Dashboard</a>
+        <div class="dashboard-logo">
 
-    <a href="/add_book">Add Book</a>
+            <div class="mini-logo">
 
-    <a href="/books">My Books</a>
+                <div class="mini-blue"></div>
 
-    <a href="/logout">Logout</a>
+                <div class="mini-green"></div>
 
-</div>
+            </div>
 
-<div class="book-card">
+            <span>
+                Neh-Meh Kitap
+            </span>
 
-    <h2>Statistics</h2>
+        </div>
 
-    <p>Total Books: {{ total_books }}</p>
+        <div class="dashboard-links">
 
-    <p>Reading: {{ reading_books }}</p>
+            <a href="/dashboard">Dashboard</a>
 
-    <p>Completed: {{ completed_books }}</p>
+            <a href="/add_book">Add Book</a>
+
+            <a href="/books">My Books</a>
+
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </div>
+
+    <div class="welcome-box">
+
+        <h1>
+            Hoş Geldin, {{ username }}
+        </h1>
+
+        <p>
+            Dijital kütüphaneni yönetmeye devam et.
+        </p>
+
+    </div>
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+
+            <h2>
+                {{ total_books }}
+            </h2>
+
+            <p>
+                Toplam Kitap
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>
+                {{ reading_books }}
+            </h2>
+
+            <p>
+                Okunuyor
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>
+                {{ completed_books }}
+            </h2>
+
+            <p>
+                Tamamlandı
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 

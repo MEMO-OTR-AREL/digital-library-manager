@@ -1,68 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
+
     <title>Add Book</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<div class="navbar">
+<div class="dashboard-wrapper">
 
-    <a href="/dashboard">Dashboard</a>
+    <div class="dashboard-navbar">
 
-    <a href="/add_book">Add Book</a>
+        <div class="dashboard-logo">
 
-    <a href="/books">My Books</a>
+            <div class="mini-logo">
 
-    <a href="/logout">Logout</a>
+                <div class="mini-blue"></div>
 
-</div>
+                <div class="mini-green"></div>
 
-<h1>Add New Book</h1>
+            </div>
 
-<div class="book-card">
+            <span>
+                Neh-Meh Kitap
+            </span>
 
-<form method="POST">
+        </div>
 
-    <label>Title:</label>
-    <br>
-    <input type="text" name="title" required>
-    <br><br>
+        <div class="dashboard-links">
 
-    <label>Author:</label>
-    <br>
-    <input type="text" name="author" required>
-    <br><br>
+            <a href="/dashboard">Dashboard</a>
 
-    <label>Category:</label>
-    <br>
-    <input type="text" name="category">
-    <br><br>
+            <a href="/add_book">Add Book</a>
 
-    <label>Status:</label>
-    <br>
-    <select name="status">
-        <option value="Reading">Reading</option>
-        <option value="Completed">Completed</option>
-        <option value="Planned">Planned</option>
-    </select>
-    <br><br>
+            <a href="/books">My Books</a>
 
-    <label>Rating:</label>
-    <br>
-    <input type="number" name="rating" min="1" max="10">
-    <br><br>
+            <a href="/logout">Logout</a>
 
-    <label>Progress (%):</label>
-    <br>
-    <input type="number" name="progress" min="0" max="100">
-    <br><br>
+        </div>
 
-    <button type="submit">Add Book</button>
+    </div>
 
-</form>
+    <div class="form-card">
+
+        <h1>
+            Yeni Kitap Ekle
+        </h1>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="title"
+                class="auth-input"
+                placeholder="Kitap Adı"
+                required
+            >
+
+            <input
+                type="text"
+                name="author"
+                class="auth-input"
+                placeholder="Yazar"
+                required
+            >
+
+            <input
+                type="text"
+                name="category"
+                class="auth-input"
+                placeholder="Kategori"
+            >
+
+            <select
+                name="status"
+                class="auth-input"
+            >
+                <option value="Reading">
+                    Reading
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Planned">
+                    Planned
+                </option>
+            </select>
+
+            <input
+                type="number"
+                name="rating"
+                class="auth-input"
+                placeholder="Puan (1-10)"
+                min="1"
+                max="10"
+            >
+
+            <input
+                type="number"
+                name="progress"
+                class="auth-input"
+                placeholder="İlerleme %"
+                min="0"
+                max="100"
+            >
+
+            <button type="submit">
+                Kitabı Ekle
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 

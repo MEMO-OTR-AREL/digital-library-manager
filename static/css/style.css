@@ -1,84 +1,455 @@
 body{
-    background-color: #121212;
-    color: white;
+    margin: 0;
     font-family: Arial, sans-serif;
-    margin: 40px;
+
+    background:
+        linear-gradient(
+            to right,
+            #20252b,
+            #171b20
+        );
+
+    color: white;
+
+    min-height: 100vh;
 }
 
-h1{
-    margin-bottom: 30px;
+/* PAGE */
+
+.page-wrapper{
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-a{
-    color: #00bfff;
-    text-decoration: none;
+/* LOGO */
+
+.top-logo{
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 70px;
+}
+
+.real-logo{
+    display: flex;
+
+    margin-right: 28px;
+}
+
+.logo-blue{
+    width: 70px;
+    height: 90px;
+
+    background-color: #119cff;
+
+    border-radius: 8px 0 0 8px;
+}
+
+.logo-green{
+    width: 70px;
+    height: 90px;
+
+    background-color: #8bcf3f;
+
+    border-radius: 0 8px 8px 0;
+
+    clip-path:
+        polygon(
+            30% 0,
+            100% 0,
+            100% 100%,
+            30% 100%,
+            0 50%
+        );
+}
+
+.logo-writing h1{
+    margin: 0;
+
+    font-size: 62px;
+
     font-weight: bold;
+
+    line-height: 1;
 }
 
-.book-card{
-    background-color: #1e1e1e;
+.logo-writing p{
+    margin-top: 12px;
+
+    color: #119cff;
+
+    letter-spacing: 8px;
+
+    font-size: 18px;
+}
+
+/* MENU */
+
+.auth-menu{
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.auth-menu a{
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    margin: 0 40px;
+
+    transition: 0.2s;
+}
+
+.auth-menu a:hover{
+    color: #119cff;
+}
+
+/* LOGIN */
+
+.login-box{
+    width: 600px;
+
+    background-color: rgba(10, 12, 15, 0.88);
+
+    padding: 50px;
+
+    border-radius: 6px;
+}
+
+.auth-input{
+    width: 100%;
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    background-color: #2f3748;
+
+    border: 1px solid #666;
+
+    color: white;
+
+    font-size: 22px;
+
+    box-sizing: border-box;
+
+    border-radius: 6px;
+}
+
+.auth-input::placeholder{
+    color: #b5b5b5;
+}
+
+.login-box button{
+    width: 100%;
+
     padding: 20px;
-    margin-top: 20px;
-    border-radius: 12px;
-    border: 1px solid #333;
-}
-form{
-    margin-bottom: 30px;
+
+    background-color: #119cff;
+
+    border: none;
+
+    color: white;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border-radius: 6px;
+
+    transition: 0.2s;
 }
 
-input, select{
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+.login-box button:hover{
+    background-color: #0b84db;
+}
+
+/* REMEMBER */
+
+.remember-row{
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.remember-row input{
+    width: 20px;
+    height: 20px;
+
     margin-right: 10px;
 }
 
-button{
-    background-color: #00bfff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.remember-row span{
+    font-size: 20px;
 }
 
-.navbar{
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-}
+/* HOME */
 
-.navbar a{
-    margin-right: 20px;
-}
+.home-card{
+    width: 600px;
 
-.hero{
-    width: 500px;
-    margin: 120px auto;
+    background-color: rgba(10, 12, 15, 0.88);
+
+    padding: 60px;
+
+    border-radius: 6px;
+
     text-align: center;
 }
 
-.hero p{
-    color: #bbbbbb;
-    margin-top: 20px;
-    line-height: 1.6;
+.home-card h2{
+    font-size: 38px;
+
+    margin-bottom: 25px;
 }
 
-.hero-buttons{
-    margin-top: 40px;
+.home-card p{
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    color: #d5d5d5;
 }
 
-.btn{
-    background-color: #00bfff;
-    color: white;
-    padding: 12px 20px;
+/* DASHBOARD */
+
+.dashboard-wrapper{
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 40px auto;
+}
+
+.dashboard-navbar{
+    background-color: rgba(10, 12, 15, 0.88);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 30px;
+
     border-radius: 8px;
-    text-decoration: none;
-    margin-right: 10px;
+
+    margin-bottom: 40px;
 }
 
-.auth-container{
-    width: 400px;
-    margin: 100px auto;
+.dashboard-logo{
+    display: flex;
+
+    align-items: center;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.mini-logo{
+    display: flex;
+
+    margin-right: 15px;
+}
+
+.mini-blue{
+    width: 35px;
+    height: 45px;
+
+    background-color: #119cff;
+
+    border-radius: 6px 0 0 6px;
+}
+
+.mini-green{
+    width: 35px;
+    height: 45px;
+
+    background-color: #8bcf3f;
+
+    border-radius: 0 6px 6px 0;
+
+    clip-path:
+        polygon(
+            30% 0,
+            100% 0,
+            100% 100%,
+            30% 100%,
+            0 50%
+        );
+}
+
+.dashboard-links a{
+    color: white;
+
+    text-decoration: none;
+
+    margin-left: 30px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.dashboard-links a:hover{
+    color: #119cff;
+}
+
+/* BOOKS PAGE */
+
+.books-header{
+    margin-bottom: 40px;
+}
+
+.books-header h1{
+    font-size: 52px;
+
+    margin-bottom: 25px;
+}
+
+.search-form{
+    display: flex;
+
+    gap: 15px;
+}
+
+.search-input,
+.search-select{
+    background-color: #2f3748;
+
+    border: 1px solid #555;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 6px;
+
+    font-size: 18px;
+}
+
+.search-input{
+    width: 300px;
+}
+
+.search-form button{
+    background-color: #119cff;
+
+    border: none;
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 6px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.books-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+
+    gap: 30px;
+}
+
+.book-modern-card{
+    background-color: rgba(10, 12, 15, 0.88);
+
+    padding: 30px;
+
+    border-radius: 10px;
+}
+
+.book-top{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.book-top h2{
+    margin: 0;
+
+    font-size: 32px;
+}
+
+.book-rating{
+    background-color: #119cff;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.book-info p{
+    font-size: 18px;
+
+    margin-bottom: 14px;
+
+    color: #d5d5d5;
+}
+
+.book-actions{
+    margin-top: 30px;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.book-actions a{
+    flex: 1;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    background-color: #119cff;
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+}
+
+.delete-btn{
+    background-color: #cf3d3d !important;
 }

@@ -1,47 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Üye Ol</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<div class="auth-container">
+<div class="page-wrapper">
 
-    <div class="book-card">
+    <div class="top-logo">
 
-        <h1>Register</h1>
+        <div class="real-logo">
+
+            <div class="logo-blue"></div>
+
+            <div class="logo-green"></div>
+
+        </div>
+
+        <div class="logo-writing">
+
+            <h1>Neh-Meh Kitap</h1>
+
+            <p>DİJİTAL KÜTÜPHANE</p>
+
+        </div>
+
+    </div>
+
+    <div class="auth-menu">
+
+        <a href="/login">Giriş Yap</a>
+
+        <a href="/register">Üye Ol</a>
+
+    </div>
+
+    <div class="login-box">
 
         <form method="POST">
 
-            <label>Username</label>
-            <br>
-            <input type="text" name="username" required>
-            <br><br>
+            <input
+                type="text"
+                name="username"
+                class="auth-input"
+                placeholder="Kullanıcı Adı"
+                required
+            >
 
-            <label>Email</label>
-            <br>
-            <input type="email" name="email" required>
-            <br><br>
+            <input
+                type="email"
+                name="email"
+                class="auth-input"
+                placeholder="E-mail"
+                required
+            >
 
-            <label>Password</label>
-            <br>
-            <input type="password" name="password" required>
-            <br><br>
+            <input
+                type="password"
+                name="password"
+                class="auth-input"
+                placeholder="Şifre"
+                required
+            >
 
             <button type="submit">
-                Register
+                Üye Ol
             </button>
 
         </form>
-
-        <br>
-
-        <a href="/">
-            Back Home
-        </a>
 
     </div>
 

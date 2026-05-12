@@ -1,31 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Digital Library Manager</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Neh-Meh Kitap</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<div class="hero">
+<div class="page-wrapper">
 
-    <h1>Digital Library Manager</h1>
+    <div class="top-logo">
 
-    <p>
-        Manage your books, track your reading progress
-        and organize your personal library.
-    </p>
+        <div class="real-logo">
 
-    <div class="hero-buttons">
+            <div class="logo-blue"></div>
 
-        <a href="/register" class="btn">
-            Register
-        </a>
+            <div class="logo-green"></div>
 
-        <a href="/login" class="btn">
-            Login
-        </a>
+        </div>
+
+        <div class="logo-writing">
+
+            <h1>Neh-Meh Kitap</h1>
+
+            <p>DİJİTAL KÜTÜPHANE</p>
+
+        </div>
+
+    </div>
+
+    <div class="auth-menu">
+
+        <a href="/login">Giriş Yap</a>
+
+        <a href="/register">Üye Ol</a>
+
+    </div>
+
+    <div class="home-card">
+
+        <h2>
+            Dijital Kütüphanene Hoş Geldin
+        </h2>
+
+        <p>
+            Kitaplarını yönet,
+            favorilere ekle,
+            okuma durumunu takip et
+            ve kendi dijital arşivini oluştur.
+        </p>
 
     </div>
 
