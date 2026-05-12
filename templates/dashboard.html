@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
 <h1>Welcome {{ username }}</h1>
 
-<a href="/add_book">Add Book</a>
-<br><br>
+<div class="navbar">
 
-<a href="/books">My Books</a>
-<br><br>
+    <a href="/dashboard">Dashboard</a>
 
-<a href="/logout">Logout</a>
+    <a href="/add_book">Add Book</a>
+
+    <a href="/books">My Books</a>
+
+    <a href="/logout">Logout</a>
+
+</div>
+
+<div class="book-card">
+
+    <h2>Statistics</h2>
+
+    <p>Total Books: {{ total_books }}</p>
+
+    <p>Reading: {{ reading_books }}</p>
+
+    <p>Completed: {{ completed_books }}</p>
+
+</div>
 
 </body>
 </html>

@@ -22,3 +22,33 @@ a{
     border-radius: 12px;
     border: 1px solid #333;
 }
+form{
+    margin-bottom: 30px;
+}
+
+input, select{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+
+button{
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar{
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.navbar a{
+    margin-right: 20px;
+}

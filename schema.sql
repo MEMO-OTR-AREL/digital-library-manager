@@ -13,6 +13,7 @@ CREATE TABLE books (
     category TEXT,
     status TEXT,
     rating INTEGER,
+    favorite INTEGER DEFAULT 0,
     access_until TEXT,
     created_at TEXT,
     FOREIGN KEY(user_id) REFERENCES users(id)

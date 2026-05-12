@@ -81,7 +81,45 @@ def dashboard():
     if "user_id" not in session:
         return redirect("/login")
 
-    return render_template("dashboard.html", username=session["username"])
+    connection = sqlite3.connect("library.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT COUNT(*) FROM books WHERE user_id = ?",
+        (session["user_id"],)
+    )
+
+    total_books = cursor.fetchone()[0]
+
+    cursor.execute(
+        """
+        SELECT COUNT(*) FROM books
+        WHERE user_id = ? AND status = 'Reading'
+        """,
+        (session["user_id"],)
+    )
+
+    reading_books = cursor.fetchone()[0]
+
+    cursor.execute(
+        """
+        SELECT COUNT(*) FROM books
+        WHERE user_id = ? AND status = 'Completed'
+        """,
+        (session["user_id"],)
+    )
+
+    completed_books = cursor.fetchone()[0]
+
+    connection.close()
+
+    return render_template(
+        "dashboard.html",
+        username=session["username"],
+        total_books=total_books,
+        reading_books=reading_books,
+        completed_books=completed_books
+    )
 
 
 @app.route("/add_book", methods=["GET", "POST"])
@@ -131,19 +169,37 @@ def books():
     if "user_id" not in session:
         return redirect("/login")
 
+    search = request.args.get("search", "")
+    category = request.args.get("category", "")
+
     connection = sqlite3.connect("library.db")
     cursor = connection.cursor()
 
-    cursor.execute(
-        "SELECT * FROM books WHERE user_id = ?",
-        (session["user_id"],)
-    )
+    query = """
+        SELECT * FROM books
+        WHERE user_id = ?
+    """
+
+    parameters = [session["user_id"]]
+
+    if search:
+        query += " AND title LIKE ?"
+        parameters.append(f"%{search}%")
+
+    if category:
+        query += " AND category = ?"
+        parameters.append(category)
+
+    cursor.execute(query, parameters)
 
     books = cursor.fetchall()
 
     connection.close()
 
-    return render_template("books.html", books=books)
+    return render_template(
+        "books.html",
+        books=books
+    )
 
 
 @app.route("/delete_book/<int:book_id>")
@@ -162,6 +218,29 @@ def delete_book(book_id):
 
     connection.commit()
     connection.close()
+
+    @app.route("/favorite_book/<int:book_id>")
+    def favorite_book(book_id):
+
+        if "user_id" not in session:
+            return redirect("/login")
+
+        connection = sqlite3.connect("library.db")
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            UPDATE books
+            SET favorite = 1
+            WHERE id = ? AND user_id = ?
+            """,
+            (book_id, session["user_id"])
+        )
+
+        connection.commit()
+        connection.close()
+
+        return redirect("/books")
 
     return redirect("/books")
 
