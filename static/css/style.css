@@ -52,3 +52,33 @@ button{
 .navbar a{
     margin-right: 20px;
 }
+
+.hero{
+    width: 500px;
+    margin: 120px auto;
+    text-align: center;
+}
+
+.hero p{
+    color: #bbbbbb;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.hero-buttons{
+    margin-top: 40px;
+}
+
+.btn{
+    background-color: #00bfff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.auth-container{
+    width: 400px;
+    margin: 100px auto;
+}

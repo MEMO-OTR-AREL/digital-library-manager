@@ -135,6 +135,7 @@ def add_book():
         category = request.form["category"]
         status = request.form["status"]
         rating = request.form["rating"]
+        progress = request.form["progress"]
 
         connection = sqlite3.connect("library.db")
         cursor = connection.cursor()
@@ -142,8 +143,8 @@ def add_book():
         cursor.execute(
             """
             INSERT INTO books
-            (user_id, title, author, category, status, rating)
-            VALUES (?, ?, ?, ?, ?, ?)
+            (user_id, title, author, category, status, rating, progress)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 session["user_id"],
@@ -151,7 +152,8 @@ def add_book():
                 author,
                 category,
                 status,
-                rating
+                rating,
+                progress
             )
         )
 
@@ -219,30 +221,32 @@ def delete_book(book_id):
     connection.commit()
     connection.close()
 
-    @app.route("/favorite_book/<int:book_id>")
-    def favorite_book(book_id):
+    return redirect("/books")
 
-        if "user_id" not in session:
-            return redirect("/login")
 
-        connection = sqlite3.connect("library.db")
-        cursor = connection.cursor()
+@app.route("/favorite_book/<int:book_id>")
+def favorite_book(book_id):
 
-        cursor.execute(
-            """
-            UPDATE books
-            SET favorite = 1
-            WHERE id = ? AND user_id = ?
-            """,
-            (book_id, session["user_id"])
-        )
+    if "user_id" not in session:
+        return redirect("/login")
 
-        connection.commit()
-        connection.close()
+    connection = sqlite3.connect("library.db")
+    cursor = connection.cursor()
 
-        return redirect("/books")
+    cursor.execute(
+        """
+        UPDATE books
+        SET favorite = 1
+        WHERE id = ? AND user_id = ?
+        """,
+        (book_id, session["user_id"])
+    )
+
+    connection.commit()
+    connection.close()
 
     return redirect("/books")
+
 
 @app.route("/edit_book/<int:book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
@@ -260,11 +264,12 @@ def edit_book(book_id):
         category = request.form["category"]
         status = request.form["status"]
         rating = request.form["rating"]
+        progress = request.form["progress"]
 
         cursor.execute(
             """
             UPDATE books
-            SET title = ?, author = ?, category = ?, status = ?, rating = ?
+            SET title = ?, author = ?, category = ?, status = ?, rating = ?, progress = ?
             WHERE id = ? AND user_id = ?
             """,
             (
@@ -273,6 +278,7 @@ def edit_book(book_id):
                 category,
                 status,
                 rating,
+                progress,
                 book_id,
                 session["user_id"]
             )
@@ -293,6 +299,7 @@ def edit_book(book_id):
     connection.close()
 
     return render_template("edit_book.html", book=book)
+
 
 @app.route("/logout")
 def logout():

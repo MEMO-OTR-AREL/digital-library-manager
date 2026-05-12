@@ -49,15 +49,20 @@
     <h2>
         {{ book[2] }}
 
-        {% if book[7] == 1 %}
+        {% if book[8] == 1 %}
             ⭐
         {% endif %}
     </h2>
 
     <p><b>Author:</b> {{ book[3] }}</p>
+
     <p><b>Category:</b> {{ book[4] }}</p>
+
     <p><b>Status:</b> {{ book[5] }}</p>
+
     <p><b>Rating:</b> {{ book[6] }}</p>
+
+    <p><b>Progress:</b> {{ book[7] }}%</p>
 
     <a href="/delete_book/{{ book[0] }}">Delete</a>
 
