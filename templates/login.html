@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <title>Login</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
 <div class="page-wrapper">
+
+    <!-- LOGO -->
 
     <div class="top-logo">
 
@@ -23,23 +28,40 @@
 
         <div class="logo-writing">
 
-            <h1>Neh-Meh Kitap</h1>
+            <h1>Neh-Meh Library</h1>
 
-            <p>DİJİTAL KÜTÜPHANE</p>
+            <p>DIGITAL LIBRARY</p>
 
         </div>
 
     </div>
 
+    <!-- MENU -->
+
     <div class="auth-menu">
 
-        <a href="/login">Giriş Yap</a>
+        <a href="/login">Login</a>
 
-        <a href="/register">Üye Ol</a>
+        <a href="/register">Register</a>
 
     </div>
 
+    <!-- LOGIN BOX -->
+
     <div class="login-box">
+
+        <span class="hero-badge">
+            Welcome Back
+        </span>
+
+        <h2 class="login-title">
+            Login to Your Account
+        </h2>
+
+        <p class="login-subtitle">
+            Access your digital library
+            and continue your reading journey.
+        </p>
 
         <form method="POST">
 
@@ -47,7 +69,7 @@
                 class="auth-input"
                 type="text"
                 name="username"
-                placeholder="Kullanıcı Adı"
+                placeholder="Username"
                 required
             >
 
@@ -55,7 +77,7 @@
                 class="auth-input"
                 type="password"
                 name="password"
-                placeholder="Şifre"
+                placeholder="Password"
                 required
             >
 
@@ -63,12 +85,12 @@
 
                 <input type="checkbox">
 
-                <span>Beni Hatırla</span>
+                <span>Remember Me</span>
 
             </div>
 
             <button type="submit">
-                Giriş Yap
+                Login
             </button>
 
         </form>
@@ -79,3 +101,4 @@
 
 </body>
 </html>
+```

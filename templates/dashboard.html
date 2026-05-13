@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -13,6 +14,8 @@
 
 <div class="dashboard-wrapper">
 
+    <!-- NAVBAR -->
+
     <div class="dashboard-navbar">
 
         <div class="dashboard-logo">
@@ -25,9 +28,13 @@
 
             </div>
 
-            <span>
-                Neh-Meh Kitap
-            </span>
+            <div class="dashboard-logo-text">
+
+                <h2>Neh-Meh Library</h2>
+
+                <p>DIGITAL LIBRARY</p>
+
+            </div>
 
         </div>
 
@@ -45,52 +52,126 @@
 
     </div>
 
-    <div class="welcome-box">
+    <!-- HERO -->
 
-        <h1>
-            Hoş Geldin, {{ username }}
-        </h1>
+    <div class="dashboard-hero">
 
-        <p>
-            Dijital kütüphaneni yönetmeye devam et.
-        </p>
+        <div class="hero-left">
+
+            <span class="hero-badge">
+                Digital Reading Tracker
+            </span>
+
+            <h1>
+                Welcome, {{ username }}
+            </h1>
+
+            <p>
+                Manage your books, track your progress
+                and build your own digital library.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/add_book" class="hero-btn">
+                    Add New Book
+                </a>
+
+                <a href="/books" class="hero-btn secondary-hero-btn">
+                    My Books
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
+
+    <!-- STATS -->
 
     <div class="stats-container">
 
         <div class="stat-card">
+
+            <div class="stat-icon">
+                📚
+            </div>
 
             <h2>
                 {{ total_books }}
             </h2>
 
             <p>
-                Toplam Kitap
+                Total Books
             </p>
 
         </div>
 
         <div class="stat-card">
+
+            <div class="stat-icon">
+                📖
+            </div>
 
             <h2>
                 {{ reading_books }}
             </h2>
 
             <p>
-                Okunuyor
+                Reading
             </p>
 
         </div>
 
         <div class="stat-card">
 
+            <div class="stat-icon">
+                ✅
+            </div>
+
             <h2>
                 {{ completed_books }}
             </h2>
 
             <p>
-                Tamamlandı
+                Completed
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- EXTRA SECTION -->
+
+    <div class="dashboard-bottom">
+
+        <div class="dashboard-box">
+
+            <h3>
+                Reading Goal
+            </h3>
+
+            <p>
+                Your goal this month:
+                <b>10 books</b>
+            </p>
+
+            <div class="goal-bar">
+
+                <div class="goal-fill"></div>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-box">
+
+            <h3>
+                Most Active Category
+            </h3>
+
+            <p>
+                Programming
             </p>
 
         </div>
@@ -101,3 +182,4 @@
 
 </body>
 </html>
+```

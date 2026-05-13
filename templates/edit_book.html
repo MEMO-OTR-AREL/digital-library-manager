@@ -1,37 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+
     <title>Edit Book</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-    <h1>Edit Book</h1>
+<div class="dashboard-wrapper">
 
-    <form method="POST">
+    <!-- NAVBAR -->
 
-        <label>Title:</label>
-        <input type="text" name="title" value="{{ book[2] }}">
-        <br><br>
+    <div class="dashboard-navbar">
 
-        <label>Author:</label>
-        <input type="text" name="author" value="{{ book[3] }}">
-        <br><br>
+        <div class="dashboard-logo">
 
-        <label>Category:</label>
-        <input type="text" name="category" value="{{ book[4] }}">
-        <br><br>
+            <div class="mini-logo">
 
-        <label>Status:</label>
-        <input type="text" name="status" value="{{ book[5] }}">
-        <br><br>
+                <div class="mini-blue"></div>
 
-        <label>Rating:</label>
-        <input type="number" name="rating" value="{{ book[6] }}">
-        <br><br>
+                <div class="mini-green"></div>
 
-        <button type="submit">Update Book</button>
+            </div>
 
-    </form>
+            <div class="dashboard-logo-text">
+
+                <h2>Neh-Meh Library</h2>
+
+                <p>DIGITAL LIBRARY</p>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-links">
+
+            <a href="/dashboard">Dashboard</a>
+
+            <a href="/add_book">Add Book</a>
+
+            <a href="/books">My Books</a>
+
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </div>
+
+    <!-- PAGE -->
+
+    <div class="addbook-container">
+
+        <div class="addbook-header">
+
+            <h1>
+                Edit Book
+            </h1>
+
+            <p>
+                Update book details and
+                manage your reading progress.
+            </p>
+
+        </div>
+
+        <div class="addbook-card">
+
+            <form method="POST">
+
+                <div class="form-grid">
+
+                    <input
+                        type="text"
+                        name="title"
+                        value="{{ book[2] }}"
+                        class="auth-input"
+                        placeholder="Book Title"
+                    >
+
+                    <input
+                        type="text"
+                        name="author"
+                        value="{{ book[3] }}"
+                        class="auth-input"
+                        placeholder="Author"
+                    >
+
+                    <input
+                        type="text"
+                        name="category"
+                        value="{{ book[4] }}"
+                        class="auth-input"
+                        placeholder="Category"
+                    >
+
+                    <select
+                        name="status"
+                        class="auth-input"
+                    >
+
+                        <option value="Reading"
+                            {% if book[5] == "Reading" %}
+                                selected
+                            {% endif %}
+                        >
+                            Reading
+                        </option>
+
+                        <option value="Completed"
+                            {% if book[5] == "Completed" %}
+                                selected
+                            {% endif %}
+                        >
+                            Completed
+                        </option>
+
+                        <option value="Planned"
+                            {% if book[5] == "Planned" %}
+                                selected
+                            {% endif %}
+                        >
+                            Planned
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        name="rating"
+                        value="{{ book[6] }}"
+                        class="auth-input"
+                        placeholder="Rating"
+                    >
+
+                    <input
+                        type="number"
+                        name="progress"
+                        value="{{ book[7] }}"
+                        class="auth-input"
+                        placeholder="Progress %"
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="big-add-btn"
+                >
+                    Update Book
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
+```

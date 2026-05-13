@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -12,6 +13,8 @@
 <body>
 
 <div class="dashboard-wrapper">
+
+    <!-- NAVBAR -->
 
     <div class="dashboard-navbar">
 
@@ -26,7 +29,7 @@
             </div>
 
             <span>
-                Neh-Meh Kitap
+                Neh-Meh Library
             </span>
 
         </div>
@@ -45,77 +48,111 @@
 
     </div>
 
-    <div class="form-card">
+    <!-- PAGE -->
 
-        <h1>
-            Yeni Kitap Ekle
-        </h1>
+    <div class="addbook-container">
 
-        <form method="POST">
+        <div class="addbook-header">
 
-            <input
-                type="text"
-                name="title"
-                class="auth-input"
-                placeholder="Kitap Adı"
-                required
-            >
+            <h1>Add New Book</h1>
 
-            <input
-                type="text"
-                name="author"
-                class="auth-input"
-                placeholder="Yazar"
-                required
-            >
+            <p>
+                Add a new book to your digital library
+                and track your reading progress.
+            </p>
 
-            <input
-                type="text"
-                name="category"
-                class="auth-input"
-                placeholder="Kategori"
-            >
+        </div>
 
-            <select
-                name="status"
-                class="auth-input"
-            >
-                <option value="Reading">
-                    Reading
-                </option>
+        <div class="addbook-card">
 
-                <option value="Completed">
-                    Completed
-                </option>
+            <form method="POST">
 
-                <option value="Planned">
-                    Planned
-                </option>
-            </select>
+                <div class="form-grid">
 
-            <input
-                type="number"
-                name="rating"
-                class="auth-input"
-                placeholder="Puan (1-10)"
-                min="1"
-                max="10"
-            >
+                    <!-- TITLE -->
 
-            <input
-                type="number"
-                name="progress"
-                class="auth-input"
-                placeholder="İlerleme %"
-                min="0"
-                max="100"
-            >
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Book Title"
+                        class="auth-input"
+                        required
+                    >
 
-            <button type="submit">
-                Kitabı Ekle
-            </button>
+                    <!-- AUTHOR -->
 
-        </form>
+                    <input
+                        type="text"
+                        name="author"
+                        placeholder="Author"
+                        class="auth-input"
+                        required
+                    >
+
+                    <!-- CATEGORY -->
+
+                    <input
+                        type="text"
+                        name="category"
+                        placeholder="Category"
+                        class="auth-input"
+                    >
+
+                    <!-- STATUS -->
+
+                    <select
+                        name="status"
+                        class="auth-input"
+                    >
+
+                        <option value="Reading">
+                            Reading
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                        <option value="Planned">
+                            Planned
+                        </option>
+
+                    </select>
+
+                    <!-- RATING -->
+
+                    <input
+                        type="number"
+                        name="rating"
+                        placeholder="Rating (1-10)"
+                        class="auth-input"
+                        min="1"
+                        max="10"
+                    >
+
+                    <!-- PROGRESS -->
+
+                    <input
+                        type="number"
+                        name="progress"
+                        placeholder="Progress %"
+                        class="auth-input"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="big-add-btn"
+                >
+                    Add Book
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
@@ -123,3 +160,4 @@
 
 </body>
 </html>
+```

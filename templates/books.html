@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -13,6 +14,8 @@
 
 <div class="dashboard-wrapper">
 
+    <!-- NAVBAR -->
+
     <div class="dashboard-navbar">
 
         <div class="dashboard-logo">
@@ -25,9 +28,7 @@
 
             </div>
 
-            <span>
-                Neh-Meh Kitap
-            </span>
+            <span>Neh-Meh Library</span>
 
         </div>
 
@@ -45,118 +46,207 @@
 
     </div>
 
-    <div class="books-header">
+    <!-- PAGE -->
 
-        <h1>
-            Kitaplarım
-        </h1>
+    <div class="books-layout">
 
-        <form method="GET" class="search-form">
+        <!-- SIDEBAR -->
 
-            <input
-                type="text"
-                name="search"
-                placeholder="Kitap ara..."
-                class="search-input"
-            >
+        <div class="books-sidebar">
 
-            <select
-                name="category"
-                class="search-select"
-            >
+            <h3>Categories</h3>
 
-                <option value="">
-                    Tüm Kategoriler
-                </option>
+            <a href="#">Novel</a>
 
-                <option value="Programming">
-                    Programming
-                </option>
+            <a href="#">Classic</a>
 
-                <option value="Roman">
-                    Roman
-                </option>
+            <a href="#">Programming</a>
 
-                <option value="Classic">
-                    Classic
-                </option>
+            <a href="#">Science</a>
 
-            </select>
+            <div class="sidebar-divider"></div>
 
-            <button type="submit">
-                Ara
-            </button>
+            <h3>Status</h3>
 
-        </form>
+            <a href="#">Reading</a>
 
-    </div>
+            <a href="#">Completed</a>
 
-    <div class="books-grid">
+            <a href="#">Planned</a>
 
-        {% for book in books %}
+            <div class="sidebar-divider"></div>
 
-        <div class="book-modern-card">
+            <h3>Filters</h3>
 
-            <div class="book-top">
+            <a href="#">Favorites</a>
 
-                <h2>
-                    {{ book[2] }}
+            <a href="#">Top Rated</a>
 
-                    {% if book[8] == 1 %}
-                        ⭐
-                    {% endif %}
-                </h2>
+        </div>
 
-                <span class="book-rating">
-                    {{ book[6] }}/10
-                </span>
+        <!-- CONTENT -->
 
-            </div>
+        <div class="books-content">
 
-            <div class="book-info">
+            <div class="books-header">
 
-                <p>
-                    <b>Yazar:</b> {{ book[3] }}
-                </p>
+                <h1>My Books</h1>
 
-                <p>
-                    <b>Kategori:</b> {{ book[4] }}
-                </p>
+                <form method="GET" class="search-form">
 
-                <p>
-                    <b>Durum:</b> {{ book[5] }}
-                </p>
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Search books..."
+                        class="search-input"
+                    >
 
-                <p>
-                    <b>İlerleme:</b> {{ book[7] }}%
-                </p>
+                    <select
+                        name="category"
+                        class="search-select"
+                    >
+
+                        <option value="">
+                            All Categories
+                        </option>
+
+                        <option value="Programming">
+                            Programming
+                        </option>
+
+                        <option value="Novel">
+                            Novel
+                        </option>
+
+                        <option value="Classic">
+                            Classic
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
 
             </div>
 
-            <div class="book-actions">
+            <!-- BOOK GRID -->
 
-                <a href="/edit_book/{{ book[0] }}">
-                    Düzenle
-                </a>
+            <div class="books-grid">
 
-                <a href="/favorite_book/{{ book[0] }}">
-                    Favori
-                </a>
+                {% for book in books %}
 
-                <a href="/delete_book/{{ book[0] }}"
-                   class="delete-btn">
-                    Sil
-                </a>
+                <div class="book-modern-card">
+
+                    <!-- BOOK IMAGE -->
+
+                    <div class="book-cover">
+
+                        <img
+                            src="{{ book[9] }}"
+                            alt="Book Cover"
+                        >
+
+                    </div>
+
+                    <!-- BOOK CONTENT -->
+
+                    <div class="book-content">
+
+                        <div class="book-top">
+
+                            <h2>
+                                {{ book[2] }}
+                            </h2>
+
+                            <span class="book-rating">
+                                {{ book[6] }}/10
+                            </span>
+
+                        </div>
+
+                        <div class="book-info">
+
+                            <p>
+                                <b>Author:</b>
+                                {{ book[3] }}
+                            </p>
+
+                            <p>
+                                <b>Category:</b>
+                                {{ book[4] }}
+                            </p>
+
+                            <p>
+                                <b>Status:</b>
+                                {{ book[5] }}
+                            </p>
+
+                        </div>
+
+                        <!-- PROGRESS -->
+
+                        <div class="progress-section">
+
+                            <div class="progress-top">
+
+                                <span>Progress</span>
+
+                                <span>
+                                    {{ book[7] }}%
+                                </span>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width: {{ book[7] }}%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ACTIONS -->
+
+                        <div class="book-actions">
+
+                            <a href="/edit_book/{{ book[0] }}">
+                                Edit
+                            </a>
+
+                            <a href="/favorite_book/{{ book[0] }}">
+                                Favorite
+                            </a>
+
+                            <a
+                                href="/delete_book/{{ book[0] }}"
+                                class="delete-btn"
+                            >
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
 
             </div>
 
         </div>
-
-        {% endfor %}
 
     </div>
 
 </div>
 
 </body>
+
 </html>
+```

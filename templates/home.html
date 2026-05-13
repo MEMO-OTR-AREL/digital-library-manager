@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
-    <title>Neh-Meh Kitap</title>
+    <title>Neh-Meh Library</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -12,6 +13,8 @@
 <body>
 
 <div class="page-wrapper">
+
+    <!-- LOGO -->
 
     <div class="top-logo">
 
@@ -25,34 +28,85 @@
 
         <div class="logo-writing">
 
-            <h1>Neh-Meh Kitap</h1>
+            <h1>Neh-Meh Library</h1>
 
-            <p>DİJİTAL KÜTÜPHANE</p>
+            <p>DIGITAL LIBRARY</p>
 
         </div>
 
     </div>
 
+    <!-- MENU -->
+
     <div class="auth-menu">
 
-        <a href="/login">Giriş Yap</a>
+        <a href="/login">Login</a>
 
-        <a href="/register">Üye Ol</a>
+        <a href="/register">Register</a>
 
     </div>
 
+    <!-- HERO -->
+
     <div class="home-card">
 
+        <span class="hero-badge">
+            Modern Digital Library
+        </span>
+
         <h2>
-            Dijital Kütüphanene Hoş Geldin
+            Welcome to Your Digital Library
         </h2>
 
         <p>
-            Kitaplarını yönet,
-            favorilere ekle,
-            okuma durumunu takip et
-            ve kendi dijital arşivini oluştur.
+            Manage your books,
+            add favorites,
+            track your reading progress
+            and build your own digital archive.
         </p>
+
+        <div class="home-features">
+
+            <div class="feature-box">
+
+                <h3>
+                    📚 Book Management
+                </h3>
+
+                <p>
+                    Organize your books into categories
+                    and manage them easily.
+                </p>
+
+            </div>
+
+            <div class="feature-box">
+
+                <h3>
+                    ⭐ Favorites
+                </h3>
+
+                <p>
+                    Add your favorite books
+                    to your personal collection.
+                </p>
+
+            </div>
+
+            <div class="feature-box">
+
+                <h3>
+                    📖 Reading Tracker
+                </h3>
+
+                <p>
+                    Track your reading status
+                    and progress percentage.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -60,3 +114,4 @@
 
 </body>
 </html>
+```
