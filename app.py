@@ -4,6 +4,63 @@ import sqlite3
 app = Flask(__name__)
 app.secret_key = "secret123"
 
+# CREATE DATABASE
+
+connection = sqlite3.connect("library.db")
+cursor = connection.cursor()
+
+# USERS TABLE
+
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS users(
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        username TEXT,
+
+        email TEXT,
+
+        password TEXT
+    )
+    """
+)
+
+# BOOKS TABLE
+
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS books(
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        user_id INTEGER,
+
+        title TEXT,
+
+        author TEXT,
+
+        category TEXT,
+
+        status TEXT,
+
+        rating INTEGER,
+
+        progress INTEGER,
+
+        favorite INTEGER,
+
+        cover_url TEXT,
+
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """
+)
+
+connection.commit()
+connection.close()
+
+
 
 # HOME
 
@@ -202,13 +259,80 @@ def add_book():
         return redirect("/login")
 
     if request.method == "POST":
-
+        id = "fixed_add_book_data"
         title = request.form["title"]
-        author = request.form["author"]
-        category = request.form["category"]
         status = request.form["status"]
-        rating = request.form["rating"]
         progress = request.form["progress"]
+
+        # AUTO BOOK DATA
+
+        book_data = {
+
+            "Suç ve Ceza": {
+                "author": "Dostoyevski",
+                "category": "Classic",
+                "rating": 10
+            },
+
+            "Kumarbaz": {
+                "author": "Dostoyevski",
+                "category": "Classic",
+                "rating": 8
+            },
+
+            "Sefiller": {
+                "author": "Victor Hugo",
+                "category": "Classic",
+                "rating": 9
+            },
+
+            "Harry Potter": {
+                "author": "J.K Rowling",
+                "category": "Fantasy",
+                "rating": 9
+            },
+
+            "Hobbit": {
+                "author": "J.R.R Tolkien",
+                "category": "Fantasy",
+                "rating": 9
+            },
+
+            "Dune": {
+                "author": "Frank Herbert",
+                "category": "Science Fiction",
+                "rating": 8
+            },
+
+            "Atomic Habits": {
+                "author": "James Clear",
+                "category": "Psychology",
+                "rating": 9
+            },
+
+            "Thinking Fast and Slow": {
+                "author": "Daniel Kahneman",
+                "category": "Psychology",
+                "rating": 10
+            },
+
+            "Clean Code": {
+                "author": "Robert C. Martin",
+                "category": "Programming",
+                "rating": 10
+            },
+
+            "Python Crash Course": {
+                "author": "Eric Matthes",
+                "category": "Programming",
+                "rating": 9
+            }
+        }
+
+        author = book_data[title]["author"]
+        category = book_data[title]["category"]
+        rating = book_data[title]["rating"]
+
 
         # BOOK COVERS
 
@@ -291,6 +415,9 @@ def add_book():
     return render_template("add_book.html")
 
 
+
+
+
 # BOOKS
 
 @app.route("/books")
@@ -301,6 +428,9 @@ def books():
 
     search = request.args.get("search", "")
     category = request.args.get("category", "")
+    status = request.args.get("status", "")
+    favorite = request.args.get("favorite", "")
+    top_rated = request.args.get("top_rated", "")
 
     connection = sqlite3.connect("library.db")
     cursor = connection.cursor()
@@ -313,17 +443,45 @@ def books():
 
     parameters = [session["user_id"]]
 
-    if search:
+    # SEARCH
+
+    if search != "":
 
         query += " AND title LIKE ?"
 
         parameters.append(f"%{search}%")
 
-    if category:
+    # CATEGORY
+
+    if category != "":
 
         query += " AND category = ?"
 
         parameters.append(category)
+
+    # STATUS
+
+    if status != "":
+
+        query += " AND status = ?"
+
+        parameters.append(status)
+
+    # FAVORITES
+
+    if favorite == "1":
+
+        query += " AND favorite = 1"
+
+    # TOP RATED
+
+    if top_rated == "1":
+
+        query += " AND rating >= 9"
+
+    # ORDER
+
+    query += " ORDER BY created_at DESC"
 
     cursor.execute(query, parameters)
 
@@ -335,6 +493,7 @@ def books():
         "books.html",
         books=books
     )
+
 
 
 # DELETE BOOK

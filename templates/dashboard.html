@@ -1,3 +1,4 @@
+```html id="m8x2qa"
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +68,8 @@
             </h1>
 
             <p>
-                Manage your books, track your progress
+                Manage your books, track your reading progress,
+                organize your favorite collections
                 and build your own digital library.
             </p>
 
@@ -77,7 +79,8 @@
                     Add New Book
                 </a>
 
-                <a href="/books" class="hero-btn secondary-hero-btn">
+                <a href="/books"
+                   class="hero-btn secondary-hero-btn">
                     My Books
                 </a>
 
@@ -118,7 +121,7 @@
             </h2>
 
             <p>
-                Reading
+                Currently Reading
             </p>
 
         </div>
@@ -134,26 +137,28 @@
             </h2>
 
             <p>
-                Completed
+                Completed Books
             </p>
 
         </div>
 
     </div>
 
-    <!-- EXTRA SECTION -->
+    <!-- DASHBOARD BOTTOM -->
 
     <div class="dashboard-bottom">
+
+        <!-- GOAL -->
 
         <div class="dashboard-box">
 
             <h3>
-                Reading Goal
+                Monthly Reading Goal
             </h3>
 
             <p>
-                Your goal this month:
-                <b>10 books</b>
+                Your current goal:
+                <b>10 Books</b>
             </p>
 
             <div class="goal-bar">
@@ -162,17 +167,122 @@
 
             </div>
 
+            <p style="margin-top:20px; color:#a5a5a5;">
+
+                Stay consistent and improve your
+                reading habits every day.
+
+            </p>
+
         </div>
+
+        <!-- FAVORITES -->
 
         <div class="dashboard-box">
 
             <h3>
-                Most Active Category
+                Favorite Books
             </h3>
 
+            <h2 style="font-size:48px; color:#119cff; margin:0;">
+                {{ favorite_books }}
+            </h2>
+
             <p>
-                Programming
+                Books marked as favorite
             </p>
+
+        </div>
+
+    </div>
+
+    <!-- RECENT BOOKS -->
+
+    <div class="dashboard-box"
+         style="margin-top:40px;">
+
+        <h3 style="margin-bottom:30px;">
+            Recently Added Books
+        </h3>
+
+        <div class="books-grid">
+
+            {% for book in recent_books %}
+
+            <div class="book-modern-card">
+
+                <div class="book-cover">
+
+                    <img
+                        src="{{ book[9] }}"
+                        alt="Book Cover"
+                    >
+
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-top">
+
+                        <h2>
+                            {{ book[2] }}
+                        </h2>
+
+                        <span class="book-rating">
+                            {{ book[6] }}/10
+                        </span>
+
+                    </div>
+
+                    <div class="book-info">
+
+                        <p>
+                            <b>Author:</b>
+                            {{ book[3] }}
+                        </p>
+
+                        <p>
+                            <b>Category:</b>
+                            {{ book[4] }}
+                        </p>
+
+                        <p>
+                            <b>Status:</b>
+                            {{ book[5] }}
+                        </p>
+
+                    </div>
+
+                    <div class="progress-section">
+
+                        <div class="progress-top">
+
+                            <span>
+                                Progress
+                            </span>
+
+                            <span>
+                                {{ book[7] }}%
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                style="width: {{ book[7] }}%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
 
         </div>
 

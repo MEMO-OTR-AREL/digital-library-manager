@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,35 +68,259 @@
 
             <form method="POST">
 
+                <!-- AUTO FILL SCRIPT -->
+
+                <script>
+
+                const booksData = {
+
+                    "Suç ve Ceza": {
+                        author: "Dostoyevski",
+                        category: "Classic",
+                        rating: "10"
+                    },
+
+                    "Kumarbaz": {
+                        author: "Dostoyevski",
+                        category: "Classic",
+                        rating: "8"
+                    },
+
+                    "Sefiller": {
+                        author: "Victor Hugo",
+                        category: "Classic",
+                        rating: "9"
+                    },
+
+                    "Harry Potter": {
+                        author: "J.K Rowling",
+                        category: "Fantasy",
+                        rating: "9"
+                    },
+
+                    "Hobbit": {
+                        author: "J.R.R Tolkien",
+                        category: "Fantasy",
+                        rating: "9"
+                    },
+
+                    "Dune": {
+                        author: "Frank Herbert",
+                        category: "Science Fiction",
+                        rating: "8"
+                    },
+
+                    "Atomic Habits": {
+                        author: "James Clear",
+                        category: "Self Improvement",
+                        rating: "9"
+                    },
+
+                    "Clean Code": {
+                        author: "Robert C. Martin",
+                        category: "Programming",
+                        rating: "10"
+                    },
+
+                    "Python Crash Course": {
+                        author: "Eric Matthes",
+                        category: "Programming",
+                        rating: "9"
+                    },
+
+                    "Thinking Fast and Slow": {
+                        author: "Daniel Kahneman",
+                        category: "Psychology",
+                        rating: "9"
+                    }
+
+                };
+
+                function fillBookData() {
+
+                    const title =
+                        document.getElementById("title").value;
+
+                    if (booksData[title]) {
+
+                        document.getElementById("author").value =
+                            booksData[title].author;
+
+                        document.getElementById("category").value =
+                            booksData[title].category;
+
+                        document.getElementById("rating").value =
+                            booksData[title].rating;
+
+                        document.getElementById("hidden-author").value =
+                            booksData[title].author;
+
+                        document.getElementById("hidden-category").value =
+                            booksData[title].category;
+
+                        document.getElementById("hidden-rating").value =
+                            booksData[title].rating;
+                    }
+                }
+
+                </script>
+
                 <div class="form-grid">
 
-                    <!-- TITLE -->
+                    <!-- BOOK TITLE -->
 
-                    <input
-                        type="text"
+                    <select
                         name="title"
-                        placeholder="Book Title"
+                        id="title"
                         class="auth-input"
+                        onchange="fillBookData()"
                         required
                     >
 
+                        <option value="">
+                            Select Book
+                        </option>
+
+                        <option value="Suç ve Ceza">
+                            Suç ve Ceza
+                        </option>
+
+                        <option value="Kumarbaz">
+                            Kumarbaz
+                        </option>
+
+                        <option value="Sefiller">
+                            Sefiller
+                        </option>
+
+                        <option value="Harry Potter">
+                            Harry Potter
+                        </option>
+
+                        <option value="Hobbit">
+                            Hobbit
+                        </option>
+
+                        <option value="Dune">
+                            Dune
+                        </option>
+
+                        <option value="Atomic Habits">
+                            Atomic Habits
+                        </option>
+
+                        <option value="Clean Code">
+                            Clean Code
+                        </option>
+
+                        <option value="Python Crash Course">
+                            Python Crash Course
+                        </option>
+
+                        <option value="Thinking Fast and Slow">
+                            Thinking Fast and Slow
+                        </option>
+
+                    </select>
+
                     <!-- AUTHOR -->
 
-                    <input
-                        type="text"
-                        name="author"
-                        placeholder="Author"
+                    <select
+                        id="author"
                         class="auth-input"
-                        required
+                        disabled
+                    >
+
+                        <option value="">
+                            Select Author
+                        </option>
+
+                        <option value="Dostoyevski">
+                            Dostoyevski
+                        </option>
+
+                        <option value="Victor Hugo">
+                            Victor Hugo
+                        </option>
+
+                        <option value="J.K Rowling">
+                            J.K Rowling
+                        </option>
+
+                        <option value="J.R.R Tolkien">
+                            J.R.R Tolkien
+                        </option>
+
+                        <option value="Frank Herbert">
+                            Frank Herbert
+                        </option>
+
+                        <option value="James Clear">
+                            James Clear
+                        </option>
+
+                        <option value="Robert C. Martin">
+                            Robert C. Martin
+                        </option>
+
+                        <option value="Eric Matthes">
+                            Eric Matthes
+                        </option>
+
+                        <option value="Daniel Kahneman">
+                            Daniel Kahneman
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="author"
+                        id="hidden-author"
                     >
 
                     <!-- CATEGORY -->
 
-                    <input
-                        type="text"
-                        name="category"
-                        placeholder="Category"
+                    <select
+                        id="category"
                         class="auth-input"
+                        disabled
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Classic">
+                            Classic
+                        </option>
+
+                        <option value="Fantasy">
+                            Fantasy
+                        </option>
+
+                        <option value="Programming">
+                            Programming
+                        </option>
+
+                        <option value="Science Fiction">
+                            Science Fiction
+                        </option>
+
+                        <option value="Self Improvement">
+                            Self Improvement
+                        </option>
+
+                        <option value="Psychology">
+                            Psychology
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="category"
+                        id="hidden-category"
                     >
 
                     <!-- STATUS -->
@@ -121,25 +346,59 @@
 
                     <!-- RATING -->
 
-                    <input
-                        type="number"
-                        name="rating"
-                        placeholder="Rating (1-10)"
+                    <select
+                        id="rating"
                         class="auth-input"
-                        min="1"
-                        max="10"
+                        disabled
+                    >
+
+                        <option value="">
+                            Select Rating
+                        </option>
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="rating"
+                        id="hidden-rating"
                     >
 
                     <!-- PROGRESS -->
 
-                    <input
-                        type="number"
+                    <select
                         name="progress"
-                        placeholder="Progress %"
                         class="auth-input"
-                        min="0"
-                        max="100"
                     >
+
+                        <option value="">
+                            Select Progress
+                        </option>
+
+                        <option value="0">0%</option>
+                        <option value="10">10%</option>
+                        <option value="20">20%</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                        <option value="80">80%</option>
+                        <option value="90">90%</option>
+                        <option value="100">100%</option>
+
+                    </select>
 
                 </div>
 

@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,31 +74,195 @@
 
             <form method="POST">
 
+                <!-- AUTO FILL -->
+
+                <script>
+
+                const booksData = {
+
+                    "Suç ve Ceza": {
+                        author: "Dostoyevski",
+                        category: "Classic",
+                        rating: "10"
+                    },
+
+                    "Kumarbaz": {
+                        author: "Dostoyevski",
+                        category: "Classic",
+                        rating: "8"
+                    },
+
+                    "Sefiller": {
+                        author: "Victor Hugo",
+                        category: "Classic",
+                        rating: "9"
+                    },
+
+                    "Harry Potter": {
+                        author: "J.K Rowling",
+                        category: "Fantasy",
+                        rating: "9"
+                    },
+
+                    "Hobbit": {
+                        author: "J.R.R Tolkien",
+                        category: "Fantasy",
+                        rating: "9"
+                    },
+
+                    "Dune": {
+                        author: "Frank Herbert",
+                        category: "Science Fiction",
+                        rating: "8"
+                    },
+
+                    "Atomic Habits": {
+                        author: "James Clear",
+                        category: "Self Improvement",
+                        rating: "9"
+                    },
+
+                    "Clean Code": {
+                        author: "Robert C. Martin",
+                        category: "Programming",
+                        rating: "10"
+                    }
+
+                };
+
+                function fillBookData() {
+
+                    const title =
+                        document.getElementById("title").value;
+
+                    if (booksData[title]) {
+
+                        document.getElementById("author").value =
+                            booksData[title].author;
+
+                        document.getElementById("category").value =
+                            booksData[title].category;
+
+                        document.getElementById("rating").value =
+                            booksData[title].rating;
+
+                        document.getElementById("hidden-author").value =
+                            booksData[title].author;
+
+                        document.getElementById("hidden-category").value =
+                            booksData[title].category;
+
+                        document.getElementById("hidden-rating").value =
+                            booksData[title].rating;
+                    }
+                }
+
+                </script>
+
                 <div class="form-grid">
 
-                    <input
-                        type="text"
+                    <!-- TITLE -->
+
+                    <select
                         name="title"
-                        value="{{ book[2] }}"
+                        id="title"
                         class="auth-input"
-                        placeholder="Book Title"
+                        onchange="fillBookData()"
                     >
 
+                        <option value="Suç ve Ceza"
+                            {% if book[2] == "Suç ve Ceza" %}
+                                selected
+                            {% endif %}
+                        >
+                            Suç ve Ceza
+                        </option>
+
+                        <option value="Kumarbaz"
+                            {% if book[2] == "Kumarbaz" %}
+                                selected
+                            {% endif %}
+                        >
+                            Kumarbaz
+                        </option>
+
+                        <option value="Sefiller"
+                            {% if book[2] == "Sefiller" %}
+                                selected
+                            {% endif %}
+                        >
+                            Sefiller
+                        </option>
+
+                        <option value="Harry Potter"
+                            {% if book[2] == "Harry Potter" %}
+                                selected
+                            {% endif %}
+                        >
+                            Harry Potter
+                        </option>
+
+                        <option value="Hobbit"
+                            {% if book[2] == "Hobbit" %}
+                                selected
+                            {% endif %}
+                        >
+                            Hobbit
+                        </option>
+
+                        <option value="Dune"
+                            {% if book[2] == "Dune" %}
+                                selected
+                            {% endif %}
+                        >
+                            Dune
+                        </option>
+
+                    </select>
+
+                    <!-- AUTHOR -->
+
+                    <select
+                        id="author"
+                        class="auth-input"
+                        disabled
+                    >
+
+                        <option selected>
+                            {{ book[3] }}
+                        </option>
+
+                    </select>
+
                     <input
-                        type="text"
+                        type="hidden"
                         name="author"
+                        id="hidden-author"
                         value="{{ book[3] }}"
-                        class="auth-input"
-                        placeholder="Author"
                     >
 
-                    <input
-                        type="text"
-                        name="category"
-                        value="{{ book[4] }}"
+                    <!-- CATEGORY -->
+
+                    <select
+                        id="category"
                         class="auth-input"
-                        placeholder="Category"
+                        disabled
                     >
+
+                        <option selected>
+                            {{ book[4] }}
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="category"
+                        id="hidden-category"
+                        value="{{ book[4] }}"
+                    >
+
+                    <!-- STATUS -->
 
                     <select
                         name="status"
@@ -130,21 +295,47 @@
 
                     </select>
 
-                    <input
-                        type="number"
-                        name="rating"
-                        value="{{ book[6] }}"
+                    <!-- RATING -->
+
+                    <select
+                        id="rating"
                         class="auth-input"
-                        placeholder="Rating"
+                        disabled
                     >
 
+                        <option selected>
+                            {{ book[6] }}
+                        </option>
+
+                    </select>
+
                     <input
-                        type="number"
-                        name="progress"
-                        value="{{ book[7] }}"
-                        class="auth-input"
-                        placeholder="Progress %"
+                        type="hidden"
+                        name="rating"
+                        id="hidden-rating"
+                        value="{{ book[6] }}"
                     >
+
+                    <!-- PROGRESS -->
+
+                    <select
+                        name="progress"
+                        class="auth-input"
+                    >
+
+                        <option value="0">0%</option>
+                        <option value="10">10%</option>
+                        <option value="20">20%</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                        <option value="80">80%</option>
+                        <option value="90">90%</option>
+                        <option value="100">100%</option>
+
+                    </select>
 
                 </div>
 
