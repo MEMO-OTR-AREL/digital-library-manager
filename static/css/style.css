@@ -1,4 +1,3 @@
-```css id="final_clean_style_css"
 body{
     margin: 0;
 
@@ -1068,4 +1067,56 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
+/* BOOKS PAGE FIX */
+
+.books-layout{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+}
+
+.books-sidebar{
+    width:220px;
+    min-width:220px;
+}
+
+.books-content{
+    flex:1;
+}
+
+.books-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
+}
+
+.books-header{
+    margin-bottom:25px;
+}
+
+.search-btn{
+
+    background-color: #119cff;
+
+    border: none;
+
+    color: white;
+
+    padding: 14px 24px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.search-btn:hover{
+
+    background-color: #0b84db;
+}
+
 

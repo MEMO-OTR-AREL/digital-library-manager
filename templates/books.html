@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <title>My Books</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
@@ -28,7 +30,9 @@
 
             </div>
 
-            <span>Neh-Meh Library</span>
+            <span>
+                Neh-Meh Library
+            </span>
 
         </div>
 
@@ -46,7 +50,7 @@
 
     </div>
 
-    <!-- PAGE -->
+    <!-- MAIN -->
 
     <div class="books-layout">
 
@@ -55,6 +59,10 @@
         <div class="books-sidebar">
 
             <h3>Categories</h3>
+
+            <a href="/books">
+                All Books
+            </a>
 
             <a href="/books?category=Classic">
                 Classic
@@ -114,18 +122,28 @@
 
         <div class="books-content">
 
+            <!-- HEADER -->
+
             <div class="books-header">
 
-                <h1>My Books</h1>
+                <h1>
+                    My Books
+                </h1>
 
-                <form method="GET"
-                      class="search-form">
+                <!-- SEARCH FORM -->
+
+                <form
+                    action="/books"
+                    method="GET"
+                    class="search-form"
+                >
 
                     <input
                         type="text"
                         name="search"
                         placeholder="Search books..."
                         class="search-input"
+                        value="{{ request.args.get('search', '') }}"
                     >
 
                     <select
@@ -137,29 +155,52 @@
                             All Categories
                         </option>
 
-                        <option value="Classic">
+                        <option value="Classic"
+                            {% if request.args.get('category') == 'Classic' %}
+                                selected
+                            {% endif %}
+                        >
                             Classic
                         </option>
 
-                        <option value="Fantasy">
+                        <option value="Fantasy"
+                            {% if request.args.get('category') == 'Fantasy' %}
+                                selected
+                            {% endif %}
+                        >
                             Fantasy
                         </option>
 
-                        <option value="Programming">
+                        <option value="Programming"
+                            {% if request.args.get('category') == 'Programming' %}
+                                selected
+                            {% endif %}
+                        >
                             Programming
                         </option>
 
-                        <option value="Science Fiction">
+                        <option value="Science Fiction"
+                            {% if request.args.get('category') == 'Science Fiction' %}
+                                selected
+                            {% endif %}
+                        >
                             Science Fiction
                         </option>
 
-                        <option value="Psychology">
+                        <option value="Psychology"
+                            {% if request.args.get('category') == 'Psychology' %}
+                                selected
+                            {% endif %}
+                        >
                             Psychology
                         </option>
 
                     </select>
 
-                    <button type="submit">
+                    <button
+                        type="submit"
+                        class="search-btn"
+                    >
                         Search
                     </button>
 
@@ -167,7 +208,7 @@
 
             </div>
 
-            <!-- BOOK GRID -->
+            <!-- GRID -->
 
             <div class="books-grid">
 
@@ -175,7 +216,7 @@
 
                 <div class="book-modern-card">
 
-                    <!-- BOOK IMAGE -->
+                    <!-- IMAGE -->
 
                     <div class="book-cover">
 
@@ -186,7 +227,7 @@
 
                     </div>
 
-                    <!-- BOOK CONTENT -->
+                    <!-- CONTENT -->
 
                     <div class="book-content">
 
@@ -220,8 +261,6 @@
                             </p>
 
                         </div>
-
-                        <!-- FAVORITE -->
 
                         {% if book[8] == 1 %}
 

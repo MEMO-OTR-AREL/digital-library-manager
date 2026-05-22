@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, session, redirect
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = "secret123"
 
+app.secret_key = "secret123"
 # CREATE DATABASE
 
 connection = sqlite3.connect("library.db")
@@ -414,10 +414,6 @@ def add_book():
 
     return render_template("add_book.html")
 
-
-
-
-
 # BOOKS
 
 @app.route("/books")
@@ -426,11 +422,11 @@ def books():
     if "user_id" not in session:
         return redirect("/login")
 
-    search = request.args.get("search", "")
-    category = request.args.get("category", "")
-    status = request.args.get("status", "")
-    favorite = request.args.get("favorite", "")
-    top_rated = request.args.get("top_rated", "")
+    search = request.args.get("search")
+    category = request.args.get("category")
+    status = request.args.get("status")
+    favorite = request.args.get("favorite")
+    top_rated = request.args.get("top_rated")
 
     connection = sqlite3.connect("library.db")
     cursor = connection.cursor()
@@ -443,25 +439,25 @@ def books():
 
     parameters = [session["user_id"]]
 
-    # SEARCH
-
-    if search != "":
-
-        query += " AND title LIKE ?"
-
-        parameters.append(f"%{search}%")
-
     # CATEGORY
 
-    if category != "":
+    if category and category.strip() != "":
 
         query += " AND category = ?"
 
         parameters.append(category)
 
+    # SEARCH
+
+    if search and search.strip() != "":
+
+        query += " AND title LIKE ?"
+
+        parameters.append(f"%{search}%")
+
     # STATUS
 
-    if status != "":
+    if status and status.strip() != "":
 
         query += " AND status = ?"
 
@@ -479,9 +475,7 @@ def books():
 
         query += " AND rating >= 9"
 
-    # ORDER
-
-    query += " ORDER BY created_at DESC"
+    query += " ORDER BY id DESC"
 
     cursor.execute(query, parameters)
 
@@ -493,6 +487,7 @@ def books():
         "books.html",
         books=books
     )
+
 
 
 
