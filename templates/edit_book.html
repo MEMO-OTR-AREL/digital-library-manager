@@ -14,53 +14,36 @@
 
 <div class="dashboard-wrapper">
 
-    <!-- NAVBAR -->
-
     <div class="dashboard-navbar">
 
         <div class="dashboard-logo">
 
             <div class="mini-logo">
-
                 <div class="mini-blue"></div>
-
                 <div class="mini-green"></div>
-
             </div>
 
             <div class="dashboard-logo-text">
-
                 <h2>Neh-Meh Library</h2>
-
                 <p>DIGITAL LIBRARY</p>
-
             </div>
 
         </div>
 
         <div class="dashboard-links">
-
             <a href="/dashboard">Dashboard</a>
-
             <a href="/add_book">Add Book</a>
-
             <a href="/books">My Books</a>
-
             <a href="/logout">Logout</a>
-
         </div>
 
     </div>
-
-    <!-- PAGE -->
 
     <div class="addbook-container">
 
         <div class="addbook-header">
 
-            <h1>
-                Edit Book
-            </h1>
+            <h1>Edit Book</h1>
 
             <p>
                 Update book details and
@@ -73,68 +56,69 @@
 
             <form method="POST">
 
-                <!-- AUTO FILL -->
-
                 <script>
+                    const booksData = {
+                        "Suç ve Ceza": {
+                            author: "Dostoyevski",
+                            category: "Classic",
+                            rating: "10"
+                        },
+                        "Kumarbaz": {
+                            author: "Dostoyevski",
+                            category: "Classic",
+                            rating: "8"
+                        },
+                        "Sefiller": {
+                            author: "Victor Hugo",
+                            category: "Classic",
+                            rating: "9"
+                        },
+                        "Harry Potter": {
+                            author: "J.K Rowling",
+                            category: "Fantasy",
+                            rating: "9"
+                        },
+                        "Hobbit": {
+                            author: "J.R.R Tolkien",
+                            category: "Fantasy",
+                            rating: "9"
+                        },
+                        "Dune": {
+                            author: "Frank Herbert",
+                            category: "Science Fiction",
+                            rating: "8"
+                        },
+                        "Atomic Habits": {
+                            author: "James Clear",
+                            category: "Psychology",
+                            rating: "9"
+                        },
+                        "Thinking Fast and Slow": {
+                            author: "Daniel Kahneman",
+                            category: "Psychology",
+                            rating: "10"
+                        },
+                        "Clean Code": {
+                            author: "Robert C. Martin",
+                            category: "Programming",
+                            rating: "10"
+                        },
+                        "Python Crash Course": {
+                            author: "Eric Matthes",
+                            category: "Programming",
+                            rating: "9"
+                        }
+                    };
 
-                const booksData = {
+                    function fillBookData() {
+                        const title = document.getElementById("title").value;
 
-                    "Suç ve Ceza": {
-                        author: "Dostoyevski",
-                        category: "Classic",
-                        rating: "10"
-                    },
-
-                    "Kumarbaz": {
-                        author: "Dostoyevski",
-                        category: "Classic",
-                        rating: "8"
-                    },
-
-                    "Sefiller": {
-                        author: "Victor Hugo",
-                        category: "Classic",
-                        rating: "9"
-                    },
-
-                    "Harry Potter": {
-                        author: "J.K Rowling",
-                        category: "Fantasy",
-                        rating: "9"
-                    },
-
-                    "Hobbit": {
-                        author: "J.R.R Tolkien",
-                        category: "Fantasy",
-                        rating: "9"
-                    },
-
-                    "Dune": {
-                        author: "Frank Herbert",
-                        category: "Science Fiction",
-                        rating: "8"
-                    },
-
-                    "Atomic Habits": {
-                        author: "James Clear",
-                        category: "Self Improvement",
-                        rating: "9"
-                    },
-
-                    "Clean Code": {
-                        author: "Robert C. Martin",
-                        category: "Programming",
-                        rating: "10"
-                    }
-
-                };
-
-                function fillBookData() {
-
-                    const title =
-                        document.getElementById("title").value;
-
-                    if (booksData[title]) {
+                        if (!booksData[title]) {
+                            document.getElementById("author").value = "";
+                            document.getElementById("category").value = "";
+                            document.getElementById("rating").value = "";
+                            return;
+                        }
 
                         document.getElementById("author").value =
                             booksData[title].author;
@@ -144,196 +128,83 @@
 
                         document.getElementById("rating").value =
                             booksData[title].rating;
-
-                        document.getElementById("hidden-author").value =
-                            booksData[title].author;
-
-                        document.getElementById("hidden-category").value =
-                            booksData[title].category;
-
-                        document.getElementById("hidden-rating").value =
-                            booksData[title].rating;
                     }
-                }
-
                 </script>
 
                 <div class="form-grid">
-
-                    <!-- TITLE -->
 
                     <select
                         name="title"
                         id="title"
                         class="auth-input"
                         onchange="fillBookData()"
+                        required
                     >
-
-                        <option value="Suç ve Ceza"
-                            {% if book[2] == "Suç ve Ceza" %}
-                                selected
-                            {% endif %}
-                        >
-                            Suç ve Ceza
-                        </option>
-
-                        <option value="Kumarbaz"
-                            {% if book[2] == "Kumarbaz" %}
-                                selected
-                            {% endif %}
-                        >
-                            Kumarbaz
-                        </option>
-
-                        <option value="Sefiller"
-                            {% if book[2] == "Sefiller" %}
-                                selected
-                            {% endif %}
-                        >
-                            Sefiller
-                        </option>
-
-                        <option value="Harry Potter"
-                            {% if book[2] == "Harry Potter" %}
-                                selected
-                            {% endif %}
-                        >
-                            Harry Potter
-                        </option>
-
-                        <option value="Hobbit"
-                            {% if book[2] == "Hobbit" %}
-                                selected
-                            {% endif %}
-                        >
-                            Hobbit
-                        </option>
-
-                        <option value="Dune"
-                            {% if book[2] == "Dune" %}
-                                selected
-                            {% endif %}
-                        >
-                            Dune
-                        </option>
-
+                        <option value="Suç ve Ceza" {% if book[2] == "Suç ve Ceza" %}selected{% endif %}>Suç ve Ceza</option>
+                        <option value="Kumarbaz" {% if book[2] == "Kumarbaz" %}selected{% endif %}>Kumarbaz</option>
+                        <option value="Sefiller" {% if book[2] == "Sefiller" %}selected{% endif %}>Sefiller</option>
+                        <option value="Harry Potter" {% if book[2] == "Harry Potter" %}selected{% endif %}>Harry Potter</option>
+                        <option value="Hobbit" {% if book[2] == "Hobbit" %}selected{% endif %}>Hobbit</option>
+                        <option value="Dune" {% if book[2] == "Dune" %}selected{% endif %}>Dune</option>
+                        <option value="Atomic Habits" {% if book[2] == "Atomic Habits" %}selected{% endif %}>Atomic Habits</option>
+                        <option value="Thinking Fast and Slow" {% if book[2] == "Thinking Fast and Slow" %}selected{% endif %}>Thinking Fast and Slow</option>
+                        <option value="Clean Code" {% if book[2] == "Clean Code" %}selected{% endif %}>Clean Code</option>
+                        <option value="Python Crash Course" {% if book[2] == "Python Crash Course" %}selected{% endif %}>Python Crash Course</option>
                     </select>
 
-                    <!-- AUTHOR -->
-
-                    <select
+                    <input
+                        type="text"
                         id="author"
                         class="auth-input"
-                        disabled
+                        value="{{ book[3] }}"
+                        placeholder="Author"
+                        readonly
                     >
-
-                        <option selected>
-                            {{ book[3] }}
-                        </option>
-
-                    </select>
 
                     <input
-                        type="hidden"
-                        name="author"
-                        id="hidden-author"
-                        value="{{ book[3] }}"
-                    >
-
-                    <!-- CATEGORY -->
-
-                    <select
+                        type="text"
                         id="category"
                         class="auth-input"
-                        disabled
-                    >
-
-                        <option selected>
-                            {{ book[4] }}
-                        </option>
-
-                    </select>
-
-                    <input
-                        type="hidden"
-                        name="category"
-                        id="hidden-category"
                         value="{{ book[4] }}"
+                        placeholder="Category"
+                        readonly
                     >
-
-                    <!-- STATUS -->
 
                     <select
                         name="status"
                         class="auth-input"
+                        required
                     >
-
-                        <option value="Reading"
-                            {% if book[5] == "Reading" %}
-                                selected
-                            {% endif %}
-                        >
-                            Reading
-                        </option>
-
-                        <option value="Completed"
-                            {% if book[5] == "Completed" %}
-                                selected
-                            {% endif %}
-                        >
-                            Completed
-                        </option>
-
-                        <option value="Planned"
-                            {% if book[5] == "Planned" %}
-                                selected
-                            {% endif %}
-                        >
-                            Planned
-                        </option>
-
-                    </select>
-
-                    <!-- RATING -->
-
-                    <select
-                        id="rating"
-                        class="auth-input"
-                        disabled
-                    >
-
-                        <option selected>
-                            {{ book[6] }}
-                        </option>
-
+                        <option value="Reading" {% if book[5] == "Reading" %}selected{% endif %}>Reading</option>
+                        <option value="Completed" {% if book[5] == "Completed" %}selected{% endif %}>Completed</option>
+                        <option value="Planned" {% if book[5] == "Planned" %}selected{% endif %}>Planned</option>
                     </select>
 
                     <input
-                        type="hidden"
-                        name="rating"
-                        id="hidden-rating"
+                        type="text"
+                        id="rating"
+                        class="auth-input"
                         value="{{ book[6] }}"
+                        placeholder="Rating"
+                        readonly
                     >
-
-                    <!-- PROGRESS -->
 
                     <select
                         name="progress"
                         class="auth-input"
+                        required
                     >
-
-                        <option value="0">0%</option>
-                        <option value="10">10%</option>
-                        <option value="20">20%</option>
-                        <option value="30">30%</option>
-                        <option value="40">40%</option>
-                        <option value="50">50%</option>
-                        <option value="60">60%</option>
-                        <option value="70">70%</option>
-                        <option value="80">80%</option>
-                        <option value="90">90%</option>
-                        <option value="100">100%</option>
-
+                        <option value="0" {% if book[7] == 0 %}selected{% endif %}>0%</option>
+                        <option value="10" {% if book[7] == 10 %}selected{% endif %}>10%</option>
+                        <option value="20" {% if book[7] == 20 %}selected{% endif %}>20%</option>
+                        <option value="30" {% if book[7] == 30 %}selected{% endif %}>30%</option>
+                        <option value="40" {% if book[7] == 40 %}selected{% endif %}>40%</option>
+                        <option value="50" {% if book[7] == 50 %}selected{% endif %}>50%</option>
+                        <option value="60" {% if book[7] == 60 %}selected{% endif %}>60%</option>
+                        <option value="70" {% if book[7] == 70 %}selected{% endif %}>70%</option>
+                        <option value="80" {% if book[7] == 80 %}selected{% endif %}>80%</option>
+                        <option value="90" {% if book[7] == 90 %}selected{% endif %}>90%</option>
+                        <option value="100" {% if book[7] == 100 %}selected{% endif %}>100%</option>
                     </select>
 
                 </div>
@@ -355,4 +226,3 @@
 
 </body>
 </html>
-```

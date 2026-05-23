@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>{{ book[2] }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+    <div class="dashboard-navbar">
+
+        <div class="dashboard-logo">
+
+            <div class="mini-logo">
+                <div class="mini-blue"></div>
+                <div class="mini-green"></div>
+            </div>
+
+            <div class="dashboard-logo-text">
+                <h2>Neh-Meh Library</h2>
+                <p>DIGITAL LIBRARY</p>
+            </div>
+
+        </div>
+
+        <div class="dashboard-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/add_book">Add Book</a>
+            <a href="/books">My Books</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+    </div>
+
+    <div class="book-detail-card">
+
+        <div class="book-detail-cover">
+            <img src="{{ book[9] }}" alt="{{ book[2] }} cover">
+        </div>
+
+        <div class="book-detail-info">
+
+            <span class="hero-badge">
+                {{ book[4] }}
+            </span>
+
+            <h1>
+                {{ book[2] }}
+            </h1>
+
+            <p>
+                <b>Author:</b>
+                {{ book[3] }}
+            </p>
+
+            <p>
+                <b>Status:</b>
+                {{ book[5] }}
+            </p>
+
+            <p>
+                <b>Rating:</b>
+                {{ book[6] }}/10
+            </p>
+
+            <p>
+                <b>Progress:</b>
+                {{ book[7] }}%
+            </p>
+
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    style="width: {{ book[7] }}%;"
+                ></div>
+            </div>
+
+            <h2>
+                Book Summary
+            </h2>
+
+            <p class="book-summary">
+                {{ book[10] }}
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/edit_book/{{ book[0] }}" class="hero-btn">
+                    Edit Book
+                </a>
+
+                <a href="/books" class="hero-btn secondary-hero-btn">
+                    Back to Books
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

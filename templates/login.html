@@ -14,39 +14,24 @@
 
 <div class="page-wrapper">
 
-    <!-- LOGO -->
-
     <div class="top-logo">
 
         <div class="real-logo">
-
             <div class="logo-blue"></div>
-
             <div class="logo-green"></div>
-
         </div>
 
         <div class="logo-writing">
-
             <h1>Neh-Meh Library</h1>
-
             <p>DIGITAL LIBRARY</p>
-
         </div>
 
     </div>
 
-    <!-- MENU -->
-
     <div class="auth-menu">
-
         <a href="/login">Login</a>
-
         <a href="/register">Register</a>
-
     </div>
-
-    <!-- LOGIN BOX -->
 
     <div class="login-box">
 
@@ -62,6 +47,12 @@
             Access your digital library
             and continue your reading journey.
         </p>
+
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+        {% endif %}
 
         <form method="POST">
 
@@ -82,11 +73,8 @@
             >
 
             <div class="remember-row">
-
                 <input type="checkbox">
-
                 <span>Remember Me</span>
-
             </div>
 
             <button type="submit">
@@ -101,4 +89,3 @@
 
 </body>
 </html>
-

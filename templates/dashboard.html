@@ -14,45 +14,30 @@
 
 <div class="dashboard-wrapper">
 
-    <!-- NAVBAR -->
-
     <div class="dashboard-navbar">
 
         <div class="dashboard-logo">
 
             <div class="mini-logo">
-
                 <div class="mini-blue"></div>
-
                 <div class="mini-green"></div>
-
             </div>
 
             <div class="dashboard-logo-text">
-
                 <h2>Neh-Meh Library</h2>
-
                 <p>DIGITAL LIBRARY</p>
-
             </div>
 
         </div>
 
         <div class="dashboard-links">
-
             <a href="/dashboard">Dashboard</a>
-
             <a href="/add_book">Add Book</a>
-
             <a href="/books">My Books</a>
-
             <a href="/logout">Logout</a>
-
         </div>
 
     </div>
-
-    <!-- HERO -->
 
     <div class="dashboard-hero">
 
@@ -73,87 +58,47 @@
             </p>
 
             <div class="hero-buttons">
-
-                <a href="/add_book" class="hero-btn">
-                    Add New Book
-                </a>
-
-                <a href="/books"
-                   class="hero-btn secondary-hero-btn">
-                    My Books
-                </a>
-
+                <a href="/add_book" class="hero-btn">Add New Book</a>
+                <a href="/books" class="hero-btn secondary-hero-btn">My Books</a>
             </div>
 
         </div>
 
     </div>
-
-    <!-- STATS -->
 
     <div class="stats-container">
 
         <div class="stat-card">
+            <div class="stat-icon">Books</div>
 
-            <div class="stat-icon">
-                📚
-            </div>
+            <h2>{{ total_books }}</h2>
 
-            <h2>
-                {{ total_books }}
-            </h2>
-
-            <p>
-                Total Books
-            </p>
-
+            <p>Total Books</p>
         </div>
 
         <div class="stat-card">
+            <div class="stat-icon">Reading</div>
 
-            <div class="stat-icon">
-                📖
-            </div>
+            <h2>{{ reading_books }}</h2>
 
-            <h2>
-                {{ reading_books }}
-            </h2>
-
-            <p>
-                Currently Reading
-            </p>
-
+            <p>Currently Reading</p>
         </div>
 
         <div class="stat-card">
+            <div class="stat-icon">Done</div>
 
-            <div class="stat-icon">
-                ✅
-            </div>
+            <h2>{{ completed_books }}</h2>
 
-            <h2>
-                {{ completed_books }}
-            </h2>
-
-            <p>
-                Completed Books
-            </p>
-
+            <p>Completed Books</p>
         </div>
 
     </div>
 
-    <!-- DASHBOARD BOTTOM -->
-
     <div class="dashboard-bottom">
-
-        <!-- GOAL -->
 
         <div class="dashboard-box">
 
-            <h3>
-                Monthly Reading Goal
-            </h3>
+            <h3>Monthly Reading Goal</h3>
 
             <p>
                 Your current goal:
@@ -161,129 +106,120 @@
             </p>
 
             <div class="goal-bar">
-
                 <div class="goal-fill"></div>
-
             </div>
 
-            <p style="margin-top:20px; color:#a5a5a5;">
-
+            <p class="muted-text">
                 Stay consistent and improve your
                 reading habits every day.
-
             </p>
 
         </div>
 
-        <!-- FAVORITES -->
-
         <div class="dashboard-box">
 
-            <h3>
-                Favorite Books
-            </h3>
+            <h3>Favorite Books</h3>
 
-            <h2 style="font-size:48px; color:#119cff; margin:0;">
+            <h2 class="big-stat">
                 {{ favorite_books }}
             </h2>
 
-            <p>
-                Books marked as favorite
-            </p>
+            <p>Books marked as favorite</p>
 
         </div>
 
     </div>
 
-    <!-- RECENT BOOKS -->
+    <div class="dashboard-box recent-section">
 
-    <div class="dashboard-box"
-         style="margin-top:40px;">
-
-        <h3 style="margin-bottom:30px;">
+        <h3>
             Recently Added Books
         </h3>
 
-        <div class="books-grid">
+        {% if recent_books|length == 0 %}
 
-            {% for book in recent_books %}
+            <div class="empty-state">
+                <h2>No books yet</h2>
 
-            <div class="book-modern-card">
+                <p>
+                    Add your first book to start building
+                    your digital library.
+                </p>
 
-                <div class="book-cover">
+                <a href="/add_book" class="hero-btn">
+                    Add Book
+                </a>
+            </div>
 
-                    <img
-                        src="{{ book[9] }}"
-                        alt="Book Cover"
-                    >
+        {% else %}
 
-                </div>
+            <div class="books-grid">
 
-                <div class="book-content">
+                {% for book in recent_books %}
 
-                    <div class="book-top">
+                <div class="book-modern-card">
 
-                        <h2>
-                            {{ book[2] }}
-                        </h2>
-
-                        <span class="book-rating">
-                            {{ book[6] }}/10
-                        </span>
-
+                    <div class="book-cover">
+                        <img
+                            src="{{ book[9] }}"
+                            alt="{{ book[2] }} cover"
+                        >
                     </div>
 
-                    <div class="book-info">
+                    <div class="book-content">
 
-                        <p>
-                            <b>Author:</b>
-                            {{ book[3] }}
-                        </p>
+                        <div class="book-top">
+                            <h2>{{ book[2] }}</h2>
 
-                        <p>
-                            <b>Category:</b>
-                            {{ book[4] }}
-                        </p>
-
-                        <p>
-                            <b>Status:</b>
-                            {{ book[5] }}
-                        </p>
-
-                    </div>
-
-                    <div class="progress-section">
-
-                        <div class="progress-top">
-
-                            <span>
-                                Progress
+                            <span class="book-rating">
+                                {{ book[6] }}/10
                             </span>
+                        </div>
 
-                            <span>
-                                {{ book[7] }}%
-                            </span>
+                        <div class="book-info">
+
+                            <p>
+                                <b>Author:</b>
+                                {{ book[3] }}
+                            </p>
+
+                            <p>
+                                <b>Category:</b>
+                                {{ book[4] }}
+                            </p>
+
+                            <p>
+                                <b>Status:</b>
+                                {{ book[5] }}
+                            </p>
 
                         </div>
 
-                        <div class="progress-bar">
+                        <div class="progress-section">
 
-                            <div
-                                class="progress-fill"
-                                style="width: {{ book[7] }}%;"
-                            ></div>
+                            <div class="progress-top">
+                                <span>Progress</span>
+                                <span>{{ book[7] }}%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div
+                                    class="progress-fill"
+                                    style="width: {{ book[7] }}%;"
+                                ></div>
+                            </div>
 
                         </div>
 
                     </div>
 
                 </div>
+
+                {% endfor %}
 
             </div>
 
-            {% endfor %}
-
-        </div>
+        {% endif %}
 
     </div>
 
@@ -291,4 +227,3 @@
 
 </body>
 </html>
-```

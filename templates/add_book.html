@@ -14,41 +14,30 @@
 
 <div class="dashboard-wrapper">
 
-    <!-- NAVBAR -->
-
     <div class="dashboard-navbar">
 
         <div class="dashboard-logo">
 
             <div class="mini-logo">
-
                 <div class="mini-blue"></div>
-
                 <div class="mini-green"></div>
-
             </div>
 
-            <span>
-                Neh-Meh Library
-            </span>
+            <div class="dashboard-logo-text">
+                <h2>Neh-Meh Library</h2>
+                <p>DIGITAL LIBRARY</p>
+            </div>
 
         </div>
 
         <div class="dashboard-links">
-
             <a href="/dashboard">Dashboard</a>
-
             <a href="/add_book">Add Book</a>
-
             <a href="/books">My Books</a>
-
             <a href="/logout">Logout</a>
-
         </div>
 
     </div>
-
-    <!-- PAGE -->
 
     <div class="addbook-container">
 
@@ -67,80 +56,69 @@
 
             <form method="POST">
 
-                <!-- AUTO FILL SCRIPT -->
-
                 <script>
+                    const booksData = {
+                        "Crime and Punishment": {
+                            author: "Fyodor Dostoevsky",
+                            category: "Classic",
+                            rating: "10"
+                        },
+                        "The Gambler": {
+                            author: "Fyodor Dostoevsky",
+                            category: "Classic",
+                            rating: "8"
+                        },
+                        "Les Miserables": {
+                            author: "Victor Hugo",
+                            category: "Classic",
+                            rating: "9"
+                        },
+                        "Harry Potter": {
+                            author: "J.K. Rowling",
+                            category: "Fantasy",
+                            rating: "9"
+                        },
+                        "The Hobbit": {
+                            author: "J.R.R. Tolkien",
+                            category: "Fantasy",
+                            rating: "9"
+                        },
+                        "Dune": {
+                            author: "Frank Herbert",
+                            category: "Science Fiction",
+                            rating: "8"
+                        },
+                        "Atomic Habits": {
+                            author: "James Clear",
+                            category: "Psychology",
+                            rating: "9"
+                        },
+                        "Thinking, Fast and Slow": {
+                            author: "Daniel Kahneman",
+                            category: "Psychology",
+                            rating: "10"
+                        },
+                        "Clean Code": {
+                            author: "Robert C. Martin",
+                            category: "Programming",
+                            rating: "10"
+                        },
+                        "Python Crash Course": {
+                            author: "Eric Matthes",
+                            category: "Programming",
+                            rating: "9"
+                        }
+                    };
 
-                const booksData = {
+                    function fillBookData() {
+                        const title = document.getElementById("title").value;
 
-                    "Suç ve Ceza": {
-                        author: "Dostoyevski",
-                        category: "Classic",
-                        rating: "10"
-                    },
-
-                    "Kumarbaz": {
-                        author: "Dostoyevski",
-                        category: "Classic",
-                        rating: "8"
-                    },
-
-                    "Sefiller": {
-                        author: "Victor Hugo",
-                        category: "Classic",
-                        rating: "9"
-                    },
-
-                    "Harry Potter": {
-                        author: "J.K Rowling",
-                        category: "Fantasy",
-                        rating: "9"
-                    },
-
-                    "Hobbit": {
-                        author: "J.R.R Tolkien",
-                        category: "Fantasy",
-                        rating: "9"
-                    },
-
-                    "Dune": {
-                        author: "Frank Herbert",
-                        category: "Science Fiction",
-                        rating: "8"
-                    },
-
-                    "Atomic Habits": {
-                        author: "James Clear",
-                        category: "Self Improvement",
-                        rating: "9"
-                    },
-
-                    "Clean Code": {
-                        author: "Robert C. Martin",
-                        category: "Programming",
-                        rating: "10"
-                    },
-
-                    "Python Crash Course": {
-                        author: "Eric Matthes",
-                        category: "Programming",
-                        rating: "9"
-                    },
-
-                    "Thinking Fast and Slow": {
-                        author: "Daniel Kahneman",
-                        category: "Psychology",
-                        rating: "9"
-                    }
-
-                };
-
-                function fillBookData() {
-
-                    const title =
-                        document.getElementById("title").value;
-
-                    if (booksData[title]) {
+                        if (!booksData[title]) {
+                            document.getElementById("author").value = "";
+                            document.getElementById("category").value = "";
+                            document.getElementById("rating").value = "";
+                            return;
+                        }
 
                         document.getElementById("author").value =
                             booksData[title].author;
@@ -150,23 +128,10 @@
 
                         document.getElementById("rating").value =
                             booksData[title].rating;
-
-                        document.getElementById("hidden-author").value =
-                            booksData[title].author;
-
-                        document.getElementById("hidden-category").value =
-                            booksData[title].category;
-
-                        document.getElementById("hidden-rating").value =
-                            booksData[title].rating;
                     }
-                }
-
                 </script>
 
                 <div class="form-grid">
-
-                    <!-- BOOK TITLE -->
 
                     <select
                         name="title"
@@ -175,216 +140,59 @@
                         onchange="fillBookData()"
                         required
                     >
-
-                        <option value="">
-                            Select Book
-                        </option>
-
-                        <option value="Suç ve Ceza">
-                            Suç ve Ceza
-                        </option>
-
-                        <option value="Kumarbaz">
-                            Kumarbaz
-                        </option>
-
-                        <option value="Sefiller">
-                            Sefiller
-                        </option>
-
-                        <option value="Harry Potter">
-                            Harry Potter
-                        </option>
-
-                        <option value="Hobbit">
-                            Hobbit
-                        </option>
-
-                        <option value="Dune">
-                            Dune
-                        </option>
-
-                        <option value="Atomic Habits">
-                            Atomic Habits
-                        </option>
-
-                        <option value="Clean Code">
-                            Clean Code
-                        </option>
-
-                        <option value="Python Crash Course">
-                            Python Crash Course
-                        </option>
-
-                        <option value="Thinking Fast and Slow">
-                            Thinking Fast and Slow
-                        </option>
-
+                        <option value="">Select Book</option>
+                        <option value="Crime and Punishment">Crime and Punishment</option>
+                        <option value="The Gambler">The Gambler</option>
+                        <option value="Les Miserables">Les Miserables</option>
+                        <option value="Harry Potter">Harry Potter</option>
+                        <option value="The Hobbit">The Hobbit</option>
+                        <option value="Dune">Dune</option>
+                        <option value="Atomic Habits">Atomic Habits</option>
+                        <option value="Thinking, Fast and Slow">Thinking, Fast and Slow</option>
+                        <option value="Clean Code">Clean Code</option>
+                        <option value="Python Crash Course">Python Crash Course</option>
                     </select>
 
-                    <!-- AUTHOR -->
-
-                    <select
+                    <input
+                        type="text"
                         id="author"
                         class="auth-input"
-                        disabled
+                        placeholder="Author"
+                        readonly
                     >
-
-                        <option value="">
-                            Select Author
-                        </option>
-
-                        <option value="Dostoyevski">
-                            Dostoyevski
-                        </option>
-
-                        <option value="Victor Hugo">
-                            Victor Hugo
-                        </option>
-
-                        <option value="J.K Rowling">
-                            J.K Rowling
-                        </option>
-
-                        <option value="J.R.R Tolkien">
-                            J.R.R Tolkien
-                        </option>
-
-                        <option value="Frank Herbert">
-                            Frank Herbert
-                        </option>
-
-                        <option value="James Clear">
-                            James Clear
-                        </option>
-
-                        <option value="Robert C. Martin">
-                            Robert C. Martin
-                        </option>
-
-                        <option value="Eric Matthes">
-                            Eric Matthes
-                        </option>
-
-                        <option value="Daniel Kahneman">
-                            Daniel Kahneman
-                        </option>
-
-                    </select>
 
                     <input
-                        type="hidden"
-                        name="author"
-                        id="hidden-author"
-                    >
-
-                    <!-- CATEGORY -->
-
-                    <select
+                        type="text"
                         id="category"
                         class="auth-input"
-                        disabled
+                        placeholder="Category"
+                        readonly
                     >
-
-                        <option value="">
-                            Select Category
-                        </option>
-
-                        <option value="Classic">
-                            Classic
-                        </option>
-
-                        <option value="Fantasy">
-                            Fantasy
-                        </option>
-
-                        <option value="Programming">
-                            Programming
-                        </option>
-
-                        <option value="Science Fiction">
-                            Science Fiction
-                        </option>
-
-                        <option value="Self Improvement">
-                            Self Improvement
-                        </option>
-
-                        <option value="Psychology">
-                            Psychology
-                        </option>
-
-                    </select>
-
-                    <input
-                        type="hidden"
-                        name="category"
-                        id="hidden-category"
-                    >
-
-                    <!-- STATUS -->
 
                     <select
                         name="status"
                         class="auth-input"
+                        required
                     >
-
-                        <option value="Reading">
-                            Reading
-                        </option>
-
-                        <option value="Completed">
-                            Completed
-                        </option>
-
-                        <option value="Planned">
-                            Planned
-                        </option>
-
-                    </select>
-
-                    <!-- RATING -->
-
-                    <select
-                        id="rating"
-                        class="auth-input"
-                        disabled
-                    >
-
-                        <option value="">
-                            Select Rating
-                        </option>
-
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-
+                        <option value="Reading">Reading</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Planned">Planned</option>
                     </select>
 
                     <input
-                        type="hidden"
-                        name="rating"
-                        id="hidden-rating"
+                        type="text"
+                        id="rating"
+                        class="auth-input"
+                        placeholder="Rating"
+                        readonly
                     >
-
-                    <!-- PROGRESS -->
 
                     <select
                         name="progress"
                         class="auth-input"
+                        required
                     >
-
-                        <option value="">
-                            Select Progress
-                        </option>
-
+                        <option value="">Select Progress</option>
                         <option value="0">0%</option>
                         <option value="10">10%</option>
                         <option value="20">20%</option>
@@ -396,7 +204,6 @@
                         <option value="80">80%</option>
                         <option value="90">90%</option>
                         <option value="100">100%</option>
-
                     </select>
 
                 </div>
@@ -418,4 +225,3 @@
 
 </body>
 </html>
-
