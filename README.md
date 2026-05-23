@@ -108,7 +108,17 @@ digital-library-manager/
 
 Basic unit tests are included for business logic functions.
 
+The tests cover:
+- Getting book data from the predefined book list
+- Calculating average rating
+- Checking whether a book is top-rated
+
 Routes are not tested directly, following the project requirements.
+
+Run tests with:
+
+```bash
+python -m pytest
 
 ## Author
 
