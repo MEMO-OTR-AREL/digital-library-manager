@@ -2,34 +2,70 @@
 
 A multi-user Flask web application for managing personal book collections.
 
+## Overview
+
+Digital Library Manager allows users to create and manage their own personal book library. Each user can register, log in, add books, update reading progress, mark favorite books, search and filter their collection, and view book details with English summaries.
+
+The application uses Flask, SQLite, raw SQL queries, and session-based authentication.
+
 ## Features
 
-- User registration and login
-- Session authentication
-- Add books
-- Edit books
-- Delete books
-- Favorite books
-- Search books
-- Filter by category
-- Reading statistics
-- Dark mode UI
+- User registration, login and logout
+- Session-based authentication
+- Multi-user book collection management
+- Add, view, edit and delete books
+- Favorite and unfavorite books
+- Search books by title
+- Filter books by category, status, favorites and top-rated books
+- Reading statistics dashboard
+- Recently added books section
+- Book detail page with English summaries
+- Modern dark library-themed UI
+
+## User Stories
+
+The project user stories and acceptance criteria are managed in the GitHub Projects Kanban Board.
+
+Main user stories:
+
+- US1 - Add Books to Personal Library
+- US2 - Manage Book Collection
+- US3 - Search and Filter Books
+- US4 - Favorite Books
+- US5 - View Reading Dashboard
+- US6 - View Book Details and Summaries
 
 ## Technologies Used
 
 - Python
 - Flask
 - SQLite
+- Raw SQL
 - HTML
 - CSS
+- Git
+- GitHub Projects
+
+## Database Structure
+
+The application uses two main tables:
+
+- `users`: stores registered user information
+- `books`: stores book records linked to users with `user_id`
+
+Each book belongs to one user. Users can only view and manage their own books.
 
 ## Installation
+
+Install Flask:
 
 ```bash
 pip install flask
 ```
 
 ## Run Project
+
+Start the Flask application:
 
 ```bash
 python app.py
@@ -49,12 +85,30 @@ digital-library-manager/
 ├── app.py
 ├── schema.sql
 ├── library.db
+├── README.md
 │
 ├── templates/
+│   ├── add_book.html
+│   ├── book_detail.html
+│   ├── books.html
+│   ├── dashboard.html
+│   ├── edit_book.html
+│   ├── home.html
+│   ├── login.html
+│   └── register.html
+│
 ├── static/
+│   ├── css/
+│   └── images/
 │
 └── tests/
 ```
+
+## Testing
+
+Basic unit tests are included for business logic functions.
+
+Routes are not tested directly, following the project requirements.
 
 ## Author
 
