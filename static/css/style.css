@@ -1,9 +1,10 @@
 body{
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #c9edf0;
+    background: #15575a;
     color: #d9f0ee;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 /* MAIN WRAPPERS */
@@ -16,7 +17,10 @@ body{
 }
 
 .page-wrapper{
-    min-height: 85vh;
+    width: 90%;
+    max-width: 1024px;
+    min-height: 82vh;
+    margin: 0 auto;
     background: #10292c;
     border-radius: 28px;
     padding: 45px;
@@ -24,6 +28,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 /* LOGO */
@@ -33,7 +38,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 45px;
+    gap: 24px;
+    margin-bottom: 35px;
 }
 
 .real-logo,
@@ -42,7 +48,8 @@ body{
 }
 
 .real-logo{
-    margin-right: 25px;
+    margin-right: 0;
+    align-items: center;
 }
 
 .logo-blue,
@@ -70,15 +77,17 @@ body{
 
 .logo-writing h1{
     margin: 0;
-    font-size: 54px;
+    font-size: 52px;
+    line-height: 1;
     color: #f2fffd;
 }
 
 .logo-writing p{
-    margin-top: 10px;
+    margin: 8px 0 0;
     color: #ffd166;
-    letter-spacing: 7px;
-    font-size: 15px;
+    letter-spacing: 8px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /* AUTH */
@@ -86,19 +95,27 @@ body{
 .auth-menu{
     text-align: center;
     margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
 }
 
 .auth-menu a{
+    display: inline-block;
     color: #d9f0ee;
+    background-color: #17383c;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 0 28px;
+    padding: 14px 34px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 209, 102, 0.28);
     transition: 0.2s;
 }
 
 .auth-menu a:hover{
-    color: #ffd166;
+    color: #10292c;
+    background-color: #ffd166;
 }
 
 .login-box,
@@ -114,6 +131,8 @@ body{
 .home-card{
     width: 720px;
     text-align: center;
+    padding-top: 38px;
+    padding-bottom: 38px;
 }
 
 .login-title{
@@ -128,7 +147,7 @@ body{
 
 .auth-input{
     width: 100%;
-    padding: 16px;
+    padding: 20px 20px;
     margin-bottom: 18px;
     background-color: #24494e;
     border: 1px solid #40676b;
@@ -150,15 +169,16 @@ body{
 .login-box button,
 .big-add-btn{
     width: 100%;
-    padding: 16px;
+    padding: 18px;
     background-color: #ffd166;
     border: none;
     color: #10292c;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 12px;
     transition: 0.2s;
+    letter-spacing: 0.2px;
 }
 
 .login-box button:hover,
@@ -248,6 +268,10 @@ body{
 /* DASHBOARD */
 
 .dashboard-wrapper{
+    width: 90%;
+    max-width: 1280px;
+    min-height: 900px;
+    margin: 35px auto;
     background-color: #10292c;
     border-radius: 28px;
     padding: 28px;
@@ -300,16 +324,23 @@ body{
 }
 
 .dashboard-links a{
-    color: #c6dfdc;
+    display: inline-block;
+    color: #ffd166;
+    background-color: rgba(255, 209, 102, 0.08);
     text-decoration: none;
-    margin-left: 24px;
-    font-size: 16px;
+    margin-left: 12px;
+    font-size: 17px;
     font-weight: bold;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 209, 102, 0.18);
     transition: 0.2s;
 }
 
 .dashboard-links a:hover{
-    color: #ffd166;
+    color: #10292c;
+    background-color: #ffd166;
+    border-color: #ffd166;
 }
 
 /* HERO */
@@ -459,16 +490,18 @@ body{
 
 .addbook-container{
     max-width: 900px;
-    margin: 0 auto;
+    margin: auto;
+    width: 100%;
 }
 
 .addbook-header{
-    margin-bottom: 25px;
+    text-align: center;
+    margin-bottom: 26px;
 }
 
 .addbook-header h1{
     margin: 0;
-    font-size: 44px;
+    font-size: 46px;
     color: #f2fffd;
 }
 
@@ -479,13 +512,16 @@ body{
 }
 
 .addbook-card{
-    padding: 32px;
+    padding: 44px;
+    border: 1px solid rgba(255, 209, 102, 0.18);
+    box-shadow: 0 22px 40px rgba(0,0,0,0.22);
 }
 
 .form-grid{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap: 18px;
+    gap: 24px;
+    margin-bottom: 26px;
 }
 
 /* BOOKS */
@@ -575,6 +611,8 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
     gap: 22px;
+    min-height: 620px;
+    align-content: start;
 }
 
 .book-modern-card{
@@ -879,4 +917,87 @@ body{
     .book-detail-cover img{
         height: 330px;
     }
+}
+.page-wrapper{
+    min-height: 70vh;
+    position: relative;
+}
+
+.home-card{
+    border: 1px solid rgba(255, 209, 102, 0.16);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.24);
+}
+
+.feature-box{
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.feature-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 150px;
+}
+.login-title{
+    margin-bottom: 24px;
+}
+.login-box{
+    border: 1px solid rgba(255, 209, 102, 0.14);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
+}
+.login-title{
+    text-align: center;
+}
+.dashboard-hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 26px;
+    min-height: 240px;
+}
+
+.hero-left{
+    flex: 1;
+}
+
+.hero-image{
+    width: 330px;
+    min-height: 220px;
+    align-self: stretch;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img{
+    width: 300px;
+    max-width: 100%;
+    opacity: 1;
+    filter: drop-shadow(0 20px 26px rgba(0,0,0,0.24));
+}
+
+@media(max-width:768px){
+    .dashboard-hero{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image img{
+        width: 210px;
+    }
+}
+.books-page-wrapper{
+    min-height: 1000px;
+}
+
+.books-page-wrapper .books-content{
+    min-height: 760px;
+}
+
+.books-page-wrapper .books-grid{
+    min-height: 680px;
+    align-content: start;
 }

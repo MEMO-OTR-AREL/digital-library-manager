@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper books-page-wrapper">
 
     <div class="dashboard-navbar">
 
@@ -66,7 +66,6 @@
 
             <a href="/books?favorite=1">Favorites</a>
             <a href="/books?top_rated=1">Top Rated</a>
-            <a href="/books">Reset Filters</a>
 
         </div>
 
@@ -137,7 +136,8 @@
                             Psychology
                         </option>
                     </select>
-                          <select
+
+                    <select
                         name="status"
                         class="search-select"
                         onchange="this.form.submit()"
@@ -186,7 +186,7 @@
                     <h2>No books found</h2>
 
                     <p>
-                        Add a new book or reset your filters
+                        Add a new book or choose another filter
                         to see your library.
                     </p>
 
