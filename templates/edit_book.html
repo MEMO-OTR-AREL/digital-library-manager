@@ -58,28 +58,28 @@
 
                 <script>
                     const booksData = {
-                        "Suç ve Ceza": {
-                            author: "Dostoyevski",
+                        "Crime and Punishment": {
+                            author: "Fyodor Dostoevsky",
                             category: "Classic",
                             rating: "10"
                         },
-                        "Kumarbaz": {
-                            author: "Dostoyevski",
+                        "The Gambler": {
+                            author: "Fyodor Dostoevsky",
                             category: "Classic",
                             rating: "8"
                         },
-                        "Sefiller": {
+                        "Les Miserables": {
                             author: "Victor Hugo",
                             category: "Classic",
                             rating: "9"
                         },
                         "Harry Potter": {
-                            author: "J.K Rowling",
+                            author: "J.K. Rowling",
                             category: "Fantasy",
                             rating: "9"
                         },
-                        "Hobbit": {
-                            author: "J.R.R Tolkien",
+                        "The Hobbit": {
+                            author: "J.R.R. Tolkien",
                             category: "Fantasy",
                             rating: "9"
                         },
@@ -93,7 +93,7 @@
                             category: "Psychology",
                             rating: "9"
                         },
-                        "Thinking Fast and Slow": {
+                        "Thinking, Fast and Slow": {
                             author: "Daniel Kahneman",
                             category: "Psychology",
                             rating: "10"
@@ -140,14 +140,14 @@
                         onchange="fillBookData()"
                         required
                     >
-                        <option value="Suç ve Ceza" {% if book[2] == "Suç ve Ceza" %}selected{% endif %}>Suç ve Ceza</option>
-                        <option value="Kumarbaz" {% if book[2] == "Kumarbaz" %}selected{% endif %}>Kumarbaz</option>
-                        <option value="Sefiller" {% if book[2] == "Sefiller" %}selected{% endif %}>Sefiller</option>
+                        <option value="Crime and Punishment" {% if book[2] == "Crime and Punishment" %}selected{% endif %}>Crime and Punishment</option>
+                        <option value="The Gambler" {% if book[2] == "The Gambler" %}selected{% endif %}>The Gambler</option>
+                        <option value="Les Miserables" {% if book[2] == "Les Miserables" %}selected{% endif %}>Les Miserables</option>
                         <option value="Harry Potter" {% if book[2] == "Harry Potter" %}selected{% endif %}>Harry Potter</option>
-                        <option value="Hobbit" {% if book[2] == "Hobbit" %}selected{% endif %}>Hobbit</option>
+                        <option value="The Hobbit" {% if book[2] == "The Hobbit" %}selected{% endif %}>The Hobbit</option>
                         <option value="Dune" {% if book[2] == "Dune" %}selected{% endif %}>Dune</option>
                         <option value="Atomic Habits" {% if book[2] == "Atomic Habits" %}selected{% endif %}>Atomic Habits</option>
-                        <option value="Thinking Fast and Slow" {% if book[2] == "Thinking Fast and Slow" %}selected{% endif %}>Thinking Fast and Slow</option>
+                        <option value="Thinking, Fast and Slow" {% if book[2] == "Thinking, Fast and Slow" %}selected{% endif %}>Thinking, Fast and Slow</option>
                         <option value="Clean Code" {% if book[2] == "Clean Code" %}selected{% endif %}>Clean Code</option>
                         <option value="Python Crash Course" {% if book[2] == "Python Crash Course" %}selected{% endif %}>Python Crash Course</option>
                     </select>

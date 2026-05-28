@@ -62,13 +62,26 @@
                 <a href="/books" class="hero-btn secondary-hero-btn">My Books</a>
             </div>
 
+            <div class="dashboard-quote">
+                <p>
+                    Reading good books is like having a conversation
+                    with the finest minds of past centuries.
+                </p>
+
+                <span>
+                    René Descartes
+                </span>
+            </div>
+
         </div>
+
         <div class="hero-image">
             <img
                 src="{{ url_for('static', filename='images/dashboard_books.png') }}"
                 alt="Books illustration"
             >
         </div>
+
     </div>
 
     <div class="stats-container">
@@ -114,11 +127,6 @@
                 <div class="goal-fill"></div>
             </div>
 
-            <p class="muted-text">
-                Stay consistent and improve your
-                reading habits every day.
-            </p>
-
         </div>
 
         <div class="dashboard-box">
@@ -146,11 +154,6 @@
             <div class="empty-state">
                 <h2>No books yet</h2>
 
-                <p>
-                    Add your first book to start building
-                    your digital library.
-                </p>
-
                 <a href="/add_book" class="hero-btn">
                     Add Book
                 </a>
@@ -164,17 +167,21 @@
 
                 <div class="book-modern-card">
 
-                    <div class="book-cover">
+                    <a href="/book/{{ book[0] }}" class="book-cover">
                         <img
                             src="{{ book[9] }}"
                             alt="{{ book[2] }} cover"
                         >
-                    </div>
+                    </a>
 
                     <div class="book-content">
 
                         <div class="book-top">
-                            <h2>{{ book[2] }}</h2>
+                            <h2>
+                                <a href="/book/{{ book[0] }}" class="book-title-link">
+                                    {{ book[2] }}
+                                </a>
+                            </h2>
 
                             <span class="book-rating">
                                 {{ book[6] }}/10

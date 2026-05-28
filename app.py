@@ -492,7 +492,7 @@ def edit_book(book_id):
                 status = ?,
                 rating = ?,
                 progress = ?,
-                cover_url = ?
+                cover_url = ?,
                 summary = ?
             WHERE id = ?
             AND user_id = ?
