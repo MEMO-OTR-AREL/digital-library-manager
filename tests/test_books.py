@@ -1,5 +1,4 @@
-from app import get_book_data, calculate_average_rating, is_top_rated
-
+from logic import get_book_data, calculate_average_rating, is_top_rated
 
 def test_get_book_data_existing_book():
     book = get_book_data("Crime and Punishment")
