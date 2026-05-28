@@ -11,7 +11,6 @@ create_tables()
 def home():
     return render_template("home.html")
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -36,7 +35,6 @@ def register():
         return redirect("/login")
 
     return render_template("register.html")
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -71,7 +69,6 @@ def login():
         )
 
     return render_template("login.html")
-
 
 @app.route("/dashboard")
 def dashboard():
@@ -148,7 +145,6 @@ def dashboard():
         recent_books=recent_books
     )
 
-
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if "user_id" not in session:
@@ -205,7 +201,6 @@ def add_book():
 
     return render_template("add_book.html")
 
-
 @app.route("/books")
 def books():
     if "user_id" not in session:
@@ -255,8 +250,6 @@ def books():
 
     return render_template("books.html", books=books)
 
-
-
 @app.route("/book/<int:book_id>")
 def book_detail(book_id):
     if "user_id" not in session:
@@ -283,7 +276,6 @@ def book_detail(book_id):
 
     return render_template("book_detail.html", book=book)
 
-
 @app.route("/delete_book/<int:book_id>")
 def delete_book(book_id):
     if "user_id" not in session:
@@ -305,7 +297,6 @@ def delete_book(book_id):
     connection.close()
 
     return redirect("/books")
-
 
 @app.route("/favorite_book/<int:book_id>")
 def favorite_book(book_id):
@@ -333,7 +324,6 @@ def favorite_book(book_id):
     connection.close()
 
     return redirect("/books")
-
 
 @app.route("/edit_book/<int:book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
@@ -406,12 +396,10 @@ def edit_book(book_id):
 
     return render_template("edit_book.html", book=book)
 
-
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
-
 
 if __name__ == "__main__":
     app.run(debug=True)

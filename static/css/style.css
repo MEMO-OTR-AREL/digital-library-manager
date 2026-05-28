@@ -7,9 +7,10 @@ body{
     font-family:Arial,sans-serif;
     background:#15575a;
     color:#e8fffc;
+    min-height:100vh;
 }
 
-a{
+{
     color:inherit;
 }
 

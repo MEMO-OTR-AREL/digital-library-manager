@@ -13,9 +13,9 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS users(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT,
-            email TEXT,
-            password TEXT
+            username TEXT NOT NULL UNIQUE,
+            email TEXT NOT NULL,
+            password TEXT NOT NULL
         )
         """
     )
@@ -24,17 +24,18 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS books(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            title TEXT,
-            author TEXT,
+            user_id INTEGER NOT NULL,
+            title TEXT NOT NULL,
+            author TEXT NOT NULL,
             category TEXT,
             status TEXT,
             rating INTEGER,
             progress INTEGER,
-            favorite INTEGER,
+            favorite INTEGER DEFAULT 0,
             cover_url TEXT,
             summary TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_id) REFERENCES users(id)
         )
         """
     )
