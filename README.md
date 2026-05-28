@@ -83,8 +83,10 @@ http://127.0.0.1:5000
 digital-library-manager/
 │
 ├── app.py
+├── book_data.py
+├── database.py
+├── logic.py
 ├── schema.sql
-├── library.db
 ├── README.md
 │
 ├── templates/
@@ -99,9 +101,11 @@ digital-library-manager/
 │
 ├── static/
 │   ├── css/
+│   │   └── style.css
 │   └── images/
 │
 └── tests/
+    └── test_books.py
 ```
 
 ## Testing

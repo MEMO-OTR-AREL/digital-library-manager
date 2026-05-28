@@ -32,6 +32,8 @@ CREATE TABLE books (
 
     cover_url TEXT,
 
+    summary TEXT,
+
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY(user_id) REFERENCES users(id)
