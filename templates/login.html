@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>Login</title>
 
     <link rel="stylesheet"
@@ -12,62 +11,72 @@
 
 <body>
 
-<div class="page-wrapper">
+<div class="auth-split-wrapper">
 
-    <div class="top-logo">
+    <div class="auth-left-panel">
 
-        <div class="real-logo">
+        <div class="auth-illustration-logo">
             <div class="logo-blue"></div>
             <div class="logo-green"></div>
         </div>
 
-        <div class="logo-writing">
-            <h1>Neh-Meh Library</h1>
-            <p>DIGITAL LIBRARY</p>
+        <h1>Neh-Meh Library</h1>
+
+        <p>
+            Manage your books, reading progress
+            and favorite books.
+        </p>
+
+    </div>
+
+    <div class="auth-right-panel">
+
+        <div class="auth-form-box">
+
+            <h2>Welcome Back</h2>
+
+            <p class="auth-form-subtitle">
+                Login to your digital library.
+            </p>
+
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+
+                <label>Username</label>
+                <input
+                    class="auth-input"
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+                <label>Password</label>
+                <input
+                    class="auth-input"
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="/register">Register</a>
+            </p>
+
         </div>
-
-    </div>
-
-    <div class="auth-menu">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    </div>
-
-    <div class="login-box">
-
-        <h2 class="login-title">
-            Login to Your Account
-        </h2>
-
-        {% if error %}
-            <div class="error-message">
-                {{ error }}
-            </div>
-        {% endif %}
-
-        <form method="POST">
-
-            <input
-                class="auth-input"
-                type="text"
-                name="username"
-                placeholder="Username"
-                required
-            >
-
-            <input
-                class="auth-input"
-                type="password"
-                name="password"
-                placeholder="Password"
-                required
-            >
-
-            <button type="submit">
-                Login
-            </button>
-
-        </form>
 
     </div>
 
